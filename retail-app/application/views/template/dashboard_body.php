@@ -80,7 +80,7 @@
                                             <i class="fa fa-qrcode fa-5x"></i>
                                             <hr>
                                             <p class="h1 text-thin"><?php echo $total_trans_count_today; ?> </p>
-                                            <small><span class="text-semibold" style="font-size: 12px;">Dine in: [ <?php echo $dine_in_today; ?> ]<br>  Take out: [ <?php echo $take_out_today; ?> ]</small>
+                                            <!-- <small><span class="text-semibold" style="font-size: 12px;">Dine in: [ <?php echo $dine_in_today; ?> ]<br>  Take out: [ <?php echo $take_out_today; ?> ]</small> -->
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                                             <i class="fa fa-cutlery fa-5x"></i>
                                             <hr>
                                             <p class="h1 text-thin"><?php echo $total_menu_items_sold_today; ?> </p>
-                                            <small><span class="text-bold" style="font-size: 12px;">Products: [ <?php echo $individual_products_sold_today; ?> ]  Packages: [ <?php echo $packages_sold_today; ?> ]</small>
+                                            <!-- <small><span class="text-bold" style="font-size: 12px;">Products: [ <?php echo $individual_products_sold_today; ?> ]  Packages: [ <?php echo $packages_sold_today; ?> ]</small> -->
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                             <i class="fa fa-window-close-o fa-5x"></i>
                                             <hr>
                                             <p class="h1 text-thin"><?php echo $cancelled_trans_today; ?></p>
-                                            <small><span class="text-semibold" style="font-size: 12px;"><?php echo $voided_menu_items_today_str; ?></small>
+                                            <!-- <small><span class="text-semibold" style="font-size: 12px;"><?php echo $voided_menu_items_today_str; ?></small> -->
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                     <!--===================================================-->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h1 class="panel-title"><i class="fa fa-calendar-check-o"></i> <i style="font-size: 18px;">Menu Items Sold Today</i></h1>
+                            <h1 class="panel-title"><i class="fa fa-calendar-check-o"></i> <i style="font-size: 18px;">Products Sold Today</i></h1>
                         </div>
 
                         <div class="panel-body">

@@ -119,6 +119,8 @@
 
                                                 <!--Submenu-->
                                                 <ul class="collapse">
+                                                    <li><a href="<?php echo base_url();?>products-page">Products</a>
+                                                    </li> 
                                                     <li><a href="<?php echo base_url();?>items-page">Items</a>
                                                     </li>                                            
                                                     <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
@@ -141,6 +143,8 @@
 
                                                 <!--Submenu-->
                                                 <ul class="collapse">
+                                                    <li><a href="<?php echo base_url();?>products-page">Products</a>
+                                                    </li> 
                                                     <li><a href="<?php echo base_url();?>items-page">Items</a>
                                                     </li>                                            
                                                     <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
@@ -157,54 +161,6 @@
                                     <?php endif ?>
 
                                     <!--Menu list item-->
-
-
-                                    <!--Menu list item-->
-                                    
-                                    <?php if($this->session->userdata('administrator') == '1' || $this->session->userdata('cashier') == '1'): ?>
-
-                                        <?php if($this->uri->segment(1) == 'products-page' || $this->uri->segment(1) == 'packages-page'){ ?>
-
-                                            <li class="active-link">
-                                                <a href="#">
-                                                    <i class="fa fa-cutlery"></i>
-                                                    <strong><span class="menu-title">Menu</span></strong>
-                                                    <i class="arrow"></i>
-                                                </a>
-
-                                                <!--Submenu-->
-                                                <ul class="collapse">
-                                                    <li><a href="<?php echo base_url();?>products-page">Products</a>
-                                                    </li>                                            
-                                                    <li><a href="<?php echo base_url();?>packages-page">Packages</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                        <?php }else{ ?>
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-cutlery"></i>
-                                                    <span class="menu-title">Menu</span>
-                                                    <i class="arrow"></i>
-                                                </a>
-
-                                                <!--Submenu-->
-                                                <ul class="collapse">
-                                                    <li><a href="<?php echo base_url();?>products-page">Products</a>
-                                                    </li>                                            
-                                                    <li><a href="<?php echo base_url();?>packages-page">Packages</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                        <?php } ?>
-
-                                    <?php endif ?>
-
-                                    <!--Menu list item-->  
-
 
                                     <!--Menu list item-->
                                     
@@ -236,38 +192,6 @@
 
                                     <!--Menu list item-->       
 
-
-                                    <!--Menu list item-->
-                                    
-                                    <?php if($this->session->userdata('administrator') == '1' || $this->session->userdata('cashier') == '1'): ?>
-
-                                        <?php if($this->uri->segment(1) == 'tables-page'){ ?>
-
-                                            <li class="active-link">
-                                                <a href="<?php echo base_url();?>tables-page">
-                                                    <i class="fa fa-table"></i>
-                                                    <strong><span class="menu-title">Tables</span></strong>
-                                                    
-                                                </a>
-                                            </li>
-
-                                        <?php }else{ ?>
-
-                                            <li>
-                                                <a href="<?php echo base_url();?>tables-page">
-                                                    <i class="fa fa-table"></i>
-                                                    <span class="menu-title">Tables</span>
-                                                    
-                                                </a>
-                                            </li>
-
-                                        <?php } ?>
-
-                                    <?php endif ?>
-
-                                    <!--Menu list item-->
-
-
                                     <!--Menu list item-->
 
                                     <?php if($this->session->userdata('administrator') == '1'): ?>
@@ -287,8 +211,6 @@
                                                     </li>                                            
                                                     <li><a href="<?php echo base_url();?>prod-discounts-page">Product Discounts</a>
                                                     </li>
-                                                    <li><a href="<?php echo base_url();?>pack-discounts-page">Package Discounts</a>
-                                                    </li>
                                                 </ul>
                                             </li>
 
@@ -306,8 +228,6 @@
                                                     <li><a href="<?php echo base_url();?>discounts-page">Trans. Discounts</a>
                                                     </li>                                            
                                                     <li><a href="<?php echo base_url();?>prod-discounts-page">Product Discounts</a>
-                                                    </li>
-                                                    <li><a href="<?php echo base_url();?>pack-discounts-page">Package Discounts</a>
                                                     </li>
                                                 </ul>
                                             </li>
