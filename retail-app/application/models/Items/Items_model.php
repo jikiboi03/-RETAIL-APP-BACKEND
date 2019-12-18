@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Items_model extends CI_Model {
  
-    var $table = 'items';
+    var $table = 'products';
 
-    var $column_order = array('item_id','name','descr','type','stock','stock_in','stock_out', 'encoded',null); //set column field database for datatable orderable
-    var $column_search = array('item_id','name','descr','type','encoded'); //set column field database for datatable searchable
+    var $column_order = array('prod_id','name','short_name','stock','stock_in','stock_out', 'reorder_pt', 'encoded',null); //set column field database for datatable orderable
+    var $column_search = array('prod_id','name','short_name','encoded'); //set column field database for datatable searchable
 
-    var $order = array('item_id' => 'desc'); // default order 
+    var $order = array('prod_id' => 'desc'); // default order 
  
     public function __construct()
     {

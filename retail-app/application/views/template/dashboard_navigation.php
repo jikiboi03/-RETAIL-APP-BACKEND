@@ -121,13 +121,11 @@
                                                 <ul class="collapse">
                                                     <li><a href="<?php echo base_url();?>products-page">Products</a>
                                                     </li> 
-                                                    <li><a href="<?php echo base_url();?>items-page">Items</a>
+                                                    <li><a href="<?php echo base_url();?>items-page">Stocks</a>
                                                     </li>                                            
-                                                    <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
-                                                    </li>
-                                                    <li><a href="<?php echo base_url();?>units-page">Units</a>
-                                                    </li>
                                                     <li><a href="<?php echo base_url();?>po-page">Purchase Orders</a>
+                                                    </li>
+                                                    <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -145,13 +143,11 @@
                                                 <ul class="collapse">
                                                     <li><a href="<?php echo base_url();?>products-page">Products</a>
                                                     </li> 
-                                                    <li><a href="<?php echo base_url();?>items-page">Items</a>
-                                                    </li>                                            
-                                                    <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
-                                                    </li>
-                                                    <li><a href="<?php echo base_url();?>units-page">Units</a>
-                                                    </li>    
+                                                    <li><a href="<?php echo base_url();?>items-page">Stocks</a>
+                                                    </li>                                                
                                                     <li><a href="<?php echo base_url();?>po-page">Purchase Orders</a>
+                                                    </li>
+                                                    <li><a href="<?php echo base_url();?>suppliers-page">Suppliers</a>
                                                     </li>
                                                 </ul>
                                             </li>

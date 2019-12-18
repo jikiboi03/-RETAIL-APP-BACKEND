@@ -9,7 +9,7 @@
                         <img src=<?php echo "'assets/img/" . $store->img . "'"; ?> style="width: 85%; margin-top: 0%; margin-right: 3%;">
                     </div>
                     <div class="col-md-7">
-                        <h1 class="page-header text-overflow"><br><br><b><?php echo $store->name; ?></b><br><span style="font-size: 16px;">Restau App | Restaurant Point of Sales App by TaTo Software Technology Services</span></h1>
+                        <h1 class="page-header text-overflow"><br><br><b><?php echo $store->name; ?></b><br><span style="font-size: 16px;">Retail App | Retail Point of Sales App by TaTo Software Technology Services</span></h1>
                     </div>
 
                     <div class="col-md-3">

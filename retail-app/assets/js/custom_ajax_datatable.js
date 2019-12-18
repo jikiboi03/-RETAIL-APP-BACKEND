@@ -7,7 +7,6 @@ $(document).ready(function()
 {
     if(tableID == "items-table")
     {
-    //datatables
             table = $('#items-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -28,7 +27,7 @@ $(document).ready(function()
                 },
                 {
                       "targets": 3,
-                      "className": "text-center",
+                      "className": "text-right",
                 },
                 {
                       "targets": 4,
@@ -48,7 +47,7 @@ $(document).ready(function()
                 },
                 {
                       "targets": 8,
-                      "className": "text-right",
+                      "className": "text-center",
                 },
                 ],
                 "scrollX": true
@@ -56,7 +55,6 @@ $(document).ready(function()
     }
     else if(tableID == "units-table")
     {
-    //datatables
             table = $('#units-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -93,7 +91,6 @@ $(document).ready(function()
     }
     else if(tableID == "suppliers-table")
     {
-    //datatables
             table = $('#suppliers-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -126,7 +123,6 @@ $(document).ready(function()
     }
     else if(tableID == "purhcase-order-table")
     {
-    //datatables
             table = $('#purhcase-order-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -167,7 +163,6 @@ $(document).ready(function()
     }
     else if(tableID == "po-temp-table")
     {
-    //datatables
             table = $('#po-temp-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -204,7 +199,6 @@ $(document).ready(function()
     }
     else if(tableID == "sold-today-table")
     {
-    //datatables
             table = $('#sold-today-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -267,7 +261,6 @@ $(document).ready(function()
     }
     else if(tableID == "products-table")
     {
-    //datatables
             table = $('#products-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -345,7 +338,6 @@ $(document).ready(function()
     }
     else if(tableID == "packages-table")
     {
-    //datatables
             table = $('#packages-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -410,7 +402,6 @@ $(document).ready(function()
     }
     else if(tableID == "categories-table")
     {
-    //datatables
             table = $('#categories-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -439,7 +430,6 @@ $(document).ready(function()
     }
     else if(tableID == "tables-table")
     {
-    //datatables
             table = $('#tables-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -499,7 +489,6 @@ $(document).ready(function()
     }
     else if(tableID == "transactions-table")
     {
-    //datatables
             // get id
             var trans_status = $('[name="trans_status"]').val();
 
@@ -601,7 +590,6 @@ $(document).ready(function()
     }
     else if(tableID == "discounts-table")
     {
-    //datatables
             table = $('#discounts-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -659,7 +647,6 @@ $(document).ready(function()
     }
     else if(tableID == "prod-discounts-table")
     {
-    //datatables
             table = $('#prod-discounts-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -730,7 +717,6 @@ $(document).ready(function()
     }
     else if(tableID == "pack-discounts-table")
     {
-    //datatables
             table = $('#pack-discounts-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
@@ -801,7 +787,6 @@ $(document).ready(function()
     }
     else if(tableID == "prod-details-table")
     {
-    //datatables
             // get id
             var prod_id = $('[name="prod_id"]').val();
 
@@ -829,7 +814,6 @@ $(document).ready(function()
     }
     else if(tableID == "pack-details-table")
     {
-    //datatables
             // get id
             var pack_id = $('[name="pack_id"]').val();
 
@@ -857,7 +841,6 @@ $(document).ready(function()
     }
     else if(tableID == "trans-details-table")
     {
-    //datatables
             // get id
             var trans_id = $('[name="trans_id"]').val();
 

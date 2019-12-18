@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2019 at 03:41 PM
+-- Generation Time: Dec 18, 2019 at 04:26 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -1084,7 +1084,8 @@ INSERT INTO `logs` (`log_id`, `user_fullname`, `log_type`, `details`, `date_time
 (959, 'n/a, n/a', 'Login', 'System user login as Administrator', '2019-06-05 23:37:59'),
 (960, 'e, Efren', 'Login', 'System user login as Staff', '2019-12-17 20:57:59'),
 (961, 'e, Efren', 'Logout', 'System user logout as Staff', '2019-12-17 20:58:15'),
-(962, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-17 20:58:23');
+(962, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-17 20:58:23'),
+(963, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-18 22:06:14');
 
 -- --------------------------------------------------------
 
@@ -30208,7 +30209,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=963;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=964;
 
 --
 -- AUTO_INCREMENT for table `packages`

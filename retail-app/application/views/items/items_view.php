@@ -24,7 +24,7 @@
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <ol class="breadcrumb">
                     <li><a href="<?php echo base_url('dashboard');?>">Dashboard</a></li>
-                    <li class="active">Items List</li>
+                    <li class="active">Stock List</li>
                 </ol>
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <!--End breadcrumb-->
@@ -35,24 +35,24 @@
                     <!--===================================================-->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Items Information Table</h3>
+                            <h3 class="panel-title">Stocks Information Table</h3>
                         </div>
                         <div class="panel-body">
-                            <button class="btn btn-success" onclick="add_item()"><i class="fa fa-plus-square"></i> &nbsp;Add New Item</button>
+                            <button class="btn btn-success" onclick="add_item()"><i class="fa fa-plus-square"></i> &nbsp;Create Purchase Order</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                             <br><br>
                             <table id="items-table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 14px;">
                                 <thead>
                                     <tr>
-                                        <th style="width:60px;">Item ID</th>
+                                        <th style="width:60px;">Prod ID</th>
                                         <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
+                                        <th>Short Name</th>
                                         <th>Stock(pcs)</th>
                                         <th>S.In</th>
                                         <th>S.Out</th>
-                                        <th style="width:60px;">Action</th>
+                                        <th>ReorderPt</th>
                                         <th class="min-desktop">Encoded</th>
+                                        <th style="width:10px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

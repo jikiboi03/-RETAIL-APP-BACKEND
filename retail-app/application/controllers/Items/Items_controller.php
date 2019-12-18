@@ -18,7 +18,7 @@ class Items_controller extends CI_Controller {
 
         $this->load->helper('url');							
 
-        $data['title'] = '<i class="fa fa-archive"></i> Items';					
+        $data['title'] = '<i class="fa fa-archive"></i> Stocks';					
         $this->load->view('template/dashboard_header',$data);
         $this->load->view('items/items_view',$data);
         $this->load->view('template/dashboard_navigation');
@@ -34,22 +34,27 @@ class Items_controller extends CI_Controller {
         foreach ($list as $items) {
             $no++;
             $row = array();
-            $row[] = 'I' . $items->item_id;
+            $row[] = 'P' . $items->prod_id;
             $row[] = '<b>' . $items->name . '</b>';
-            $row[] = $items->descr;
-            
-            $row[] = $items->type;
+            $row[] = $items->short_name;
 
             $row[] = $items->stock;
             $row[] = $items->stock_in;
             $row[] = $items->stock_out;
-
-            //add html for action
-            $row[] = '<a class="btn btn-info" href="javascript:void(0)" title="Edit" onclick="edit_item('."'".$items->item_id."'".')"><i class="fa fa-pencil-square-o"></i></a>
-                      
-                      <a class="btn btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_item('."'".$items->item_id."'".', '."'".$items->name."'".')"><i class="fa fa-trash"></i></a>';
+            $row[] = $items->reorder_pt;
 
             $row[] = $items->encoded;
+
+            if($this->session->userdata('administrator') == '0')
+            {
+                //add html for action
+                $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="View" onclick="view_product('."'".$items->prod_id."'".')" disabled><i class="fa fa-eye"></i> </a>';
+            }
+            else
+            {
+                //add html for action
+                $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="View" onclick="view_product('."'".$items->prod_id."'".')"><i class="fa fa-eye"></i> </a>';
+            }
  
             $data[] = $row;
         }
