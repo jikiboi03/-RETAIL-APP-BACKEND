@@ -7,6 +7,7 @@ class Items_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Items/Items_model','items');
+        $this->load->model('PO_temp/PO_temp_model','po_temp');
     }
 
     public function index()						
@@ -34,6 +35,7 @@ class Items_controller extends CI_Controller {
         foreach ($list as $items) {
             $no++;
             $row = array();
+            $row[] = $items->prod_id;
             $row[] = 'P' . $items->prod_id;
             $row[] = '<b>' . $items->name . '</b>';
             $row[] = $items->short_name;
@@ -77,14 +79,19 @@ class Items_controller extends CI_Controller {
  
     public function ajax_add()
     {
-        $this->_validate();
-        $data = array(
-                'name' => $this->input->post('name'),
-                'descr' => $this->input->post('descr'),
-                'type' => $this->input->post('type'),
-                'removed' => 0
-            );
-        $insert = $this->items->save($data);
+        $prod_ids = explode(',',  $this->input->post('selected'));
+        foreach ($prod_ids as $prod_id) {
+            $duplicates = $this->po_temp->get_duplicates($prod_id);
+            if ($duplicates->num_rows() == 0)
+            {
+                $data = array(
+                    'prod_id' => $prod_id,
+                    'unit' => 'pcs',
+                    'unit_qty' => 0
+                );
+                $insert = $this->po_temp->save($data);
+            }
+        }
         echo json_encode(array("status" => TRUE));
     }
  

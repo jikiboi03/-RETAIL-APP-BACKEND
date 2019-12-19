@@ -7,51 +7,68 @@ $(document).ready(function()
 {
     if(tableID == "items-table")
     {
-            table = $('#items-table').DataTable({ 
-         
-                "processing": true, //Feature control the processing indicator.
-                "serverSide": true, //Feature control DataTables' server-side processing mode.
-                "order": [], //Initial no order.
-         
-                // Load data for the table's content from an Ajax source
-                "ajax": {
-                    "url": "showlist-items",
-                    "type": "POST",
+        table = $('#items-table').DataTable({ 
+            "processing": true, //Feature control the processing indicator.
+            "serverSide": true, //Feature control DataTables' server-side processing mode.
+            "order": [], //Initial no order.
+        
+            // Load data for the table's content from an Ajax source
+            "ajax": {
+                "url": "showlist-items",
+                "type": "POST",
+            },
+        
+            //Set column definition initialisation properties.
+            "columnDefs": [
+                {
+                    'targets': 0,
+                    'checkboxes': {
+                        'selectRow': true
+                    }
                 },
-         
-                //Set column definition initialisation properties.
-                "columnDefs": [
                 { 
                     "targets": [ -1 ], //last column
                     "orderable": false, //set not orderable
                 },
                 {
-                      "targets": 3,
-                      "className": "text-right",
+                    "targets": 3,
+                    "className": "text-right",
                 },
                 {
-                      "targets": 4,
-                      "className": "text-right",
+                    "targets": 4,
+                    "className": "text-right",
                 },
                 {
-                      "targets": 5,
-                      "className": "text-right",
+                    "targets": 5,
+                    "className": "text-right",
                 },
                 {
-                      "targets": 6,
-                      "className": "text-right",
+                    "targets": 6,
+                    "className": "text-right",
                 },
                 {
-                      "targets": 7,
-                      "className": "text-center",
+                    "targets": 7,
+                    "className": "text-center",
                 },
                 {
-                      "targets": 8,
-                      "className": "text-center",
-                },
-                ],
-                "scrollX": true
-            });
+                    "targets": 8,
+                    "className": "text-center",
+                }
+            ],
+            "select": {
+                'style': 'multi'
+            },
+            "scrollX": true,
+        });
+        table
+        .on( 'select', function ( e, dt, type, indexes ) {
+            $('#selected').val(table.column(0).checkboxes.selected().join(","));
+            console.log($('#selected').val());
+        } )
+        .on( 'deselect', function ( e, dt, type, indexes ) {
+            $('#selected').val(table.column(0).checkboxes.selected().join(","));
+            console.log($('#selected').val());
+        } );
     }
     else if(tableID == "units-table")
     {
@@ -2037,16 +2054,33 @@ function view_edit_user(id) // for customer table
 
 // ================================================== ADD SECTION ======================================================================
 
-function add_item() // ---> calling for the Add Modal form
+function create_po() // calling for create po function
 {
-    save_method = 'add-item';
-    text = 'Add Item';
-    
-    $('#form')[0].reset(); // reset form on modals
-    $('.form-group').removeClass('has-error'); // clear error class
-    $('.help-block').empty(); // clear error string
-    $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text(text); // Set Title to Bootstrap modal title
+    url = 'create-po';
+    $form = '#form';
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $($form).serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+            if(data.status) //if success close modal and reload ajax table
+            {   
+                alert("okay");
+            }
+            else
+            {
+                
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+        }
+    });
 }
 
 function add_unit() // ---> calling for the Add Modal form

@@ -35,7 +35,7 @@
 			<div class="cls-brand">
 				<a class="box-inline" href="index.html">
 					<!-- <img alt="Nifty Admin" src="img/logo.png" class="brand-icon"> -->
-					<span class="brand-title">Restau App | <span class="text-thin"> POS</span></span>
+					<span class="brand-title">Retail App | <span class="text-thin"> POS</span></span>
 				</a>
 			</div>
 		</div>

@@ -148,4 +148,15 @@ class PO_temp_model extends CI_Model {
         $this->db->where('num', $num);
         $this->db->delete($this->table);
     }
+
+    // check for duplicates in the database table for validation
+    function get_duplicates($prod_id)
+    {      
+        $this->db->from($this->table);
+        $this->db->where('prod_id',$prod_id);
+
+        $query = $this->db->get();
+
+        return $query;
+    }
 }

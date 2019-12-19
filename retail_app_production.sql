@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2019 at 04:26 PM
+-- Generation Time: Dec 19, 2019 at 05:12 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -1085,7 +1085,8 @@ INSERT INTO `logs` (`log_id`, `user_fullname`, `log_type`, `details`, `date_time
 (960, 'e, Efren', 'Login', 'System user login as Staff', '2019-12-17 20:57:59'),
 (961, 'e, Efren', 'Logout', 'System user logout as Staff', '2019-12-17 20:58:15'),
 (962, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-17 20:58:23'),
-(963, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-18 22:06:14');
+(963, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-18 22:06:14'),
+(964, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-19 20:54:18');
 
 -- --------------------------------------------------------
 
@@ -1201,11 +1202,24 @@ CREATE TABLE `po_details` (
 
 CREATE TABLE `po_temp` (
   `num` int(11) NOT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `unit_id` int(11) DEFAULT NULL,
-  `unit_qty` int(11) DEFAULT NULL,
-  `pcs_qty` int(11) DEFAULT NULL
+  `prod_id` int(11) DEFAULT NULL,
+  `unit` varchar(20) DEFAULT NULL,
+  `unit_qty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `po_temp`
+--
+
+INSERT INTO `po_temp` (`num`, `prod_id`, `unit`, `unit_qty`) VALUES
+(1, 84, 'pcs', 0),
+(2, 85, 'pcs', 0),
+(3, 83, 'pcs', 0),
+(4, 78, 'pcs', 0),
+(5, 76, 'pcs', 0),
+(6, 82, 'pcs', 0),
+(7, 77, 'pcs', 0),
+(8, 79, 'pcs', 0);
 
 -- --------------------------------------------------------
 
@@ -30209,7 +30223,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=964;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=965;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -30239,7 +30253,7 @@ ALTER TABLE `pos`
 -- AUTO_INCREMENT for table `po_temp`
 --
 ALTER TABLE `po_temp`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`

@@ -36,7 +36,7 @@ $route['items-page'] = 'Items/Items_controller';
 
 $route['showlist-items'] = 'Items/Items_controller/ajax_list';
 
-$route['add-item'] = 'Items/Items_controller/ajax_add';
+$route['create-po'] = 'Items/Items_controller/ajax_add';
 
 $route['edit-item/(:num)'] = 'Items/Items_controller/ajax_edit/$1';
 

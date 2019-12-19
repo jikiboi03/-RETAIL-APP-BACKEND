@@ -27,6 +27,7 @@
     <link href="<?php echo base_url();?>assets/css/demo/nifty-demo.min.css" rel="stylesheet">
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="<?php echo base_url();?>assets/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugins/datatables/media/css/dataTables.checkboxes.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/css/custom.css" rel="stylesheet">
     <!--SCRIPT-->

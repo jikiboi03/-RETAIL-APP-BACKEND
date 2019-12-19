@@ -5,7 +5,7 @@ class Items_model extends CI_Model {
  
     var $table = 'products';
 
-    var $column_order = array('prod_id','name','short_name','stock','stock_in','stock_out', 'reorder_pt', 'encoded',null); //set column field database for datatable orderable
+    var $column_order = array('prod_id','prod_id','name','short_name','stock','stock_in','stock_out', 'reorder_pt', 'encoded',null); //set column field database for datatable orderable
     var $column_search = array('prod_id','name','short_name','encoded'); //set column field database for datatable searchable
 
     var $order = array('prod_id' => 'desc'); // default order 

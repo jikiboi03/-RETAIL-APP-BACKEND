@@ -38,12 +38,13 @@
                             <h3 class="panel-title">Stocks Information Table</h3>
                         </div>
                         <div class="panel-body">
-                            <button class="btn btn-success" onclick="add_item()"><i class="fa fa-plus-square"></i> &nbsp;Create Purchase Order</button>
+                            <button class="btn btn-success" onclick="create_po()"><i class="fa fa-plus-square"></i> &nbsp;Create Purchase Order</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                             <br><br>
                             <table id="items-table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 14px;">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th style="width:60px;">Prod ID</th>
                                         <th>Name</th>
                                         <th>Short Name</th>
@@ -70,60 +71,6 @@
             <!--===================================================-->
             <!--END CONTENT CONTAINER-->
 
-        <!-- Bootstrap modal -->
-            <div class="modal fade" id="modal_form" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Item Form</h3>
-                        </div>
-                        <div class="modal-body form">
-                            <form action="#" id="form" class="form-horizontal">
-
-                                <input type="hidden" value="" name="item_id"/>
-                                <input type="hidden" value="" name="current_name"/>
-                                
-                                <div class="form-body">
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Name :</label>
-                                        <div class="col-md-9">
-                                            <input name="name" placeholder="Item Name" class="form-control" type="text">
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Description :</label>
-                                        <div class="col-md-9">
-                                            <textarea name="descr" placeholder="Item Desctription" class="form-control"></textarea>
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Type :</label>
-                                        <div class="col-md-9">
-                                            <select name="type" class="form-control">
-                                                <option value="">--Select Type--</option>
-                                                <option value="NON-PERISHABLE">NON-PERISHABLE</option>
-                                                <option value="PERISHABLE">PERISHABLE</option>
-                                                <option value="EQUIPMENT">EQUIPMENT</option>
-                                            </select>
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="btnSave" onclick="save()" class="btn btn-primary"><i class="fa fa-floppy-o"></i> &nbsp;Save</button>
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> &nbsp;Cancel</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-            <!-- End Bootstrap modal -->
+            <form action="#" id="form" class="form-horizontal">
+                <input type="hidden" value="" name="selected" id="selected"/>
+            </form>
