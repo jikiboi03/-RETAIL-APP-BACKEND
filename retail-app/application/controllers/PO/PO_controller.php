@@ -7,6 +7,8 @@ class PO_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('PO/PO_model','po');
+        $this->load->model('PO_details/PO_details_model','po_details');
+        $this->load->model('PO_temp/PO_temp_model','po_temp');
     }
 
     public function index()						
@@ -70,11 +72,29 @@ class PO_controller extends CI_Controller {
         $this->_validate();
         $data = array(
                 'supplier_id' => $this->input->post('supplier_id'),
-                'user_id' => $this->input->post('user_id'),
+                'user_id' => $this->session->userdata('user_id'),
                 'date' => $this->input->post('date'),
-                'status' => $this->input->post('status'),
+                'status' => 'PENDING',
             );
         $insert = $this->po->save($data);
+        
+        $po_temp_items = $this->po_temp->get_po_temp_items();
+
+        foreach ($po_temp_items as $po_temp_item)
+        {
+            // insert po item to po_details from po_temp_details ------------------------
+            $data_po_items = array(
+                'po_id' => $insert,
+                'num' => $po_temp_item->num,
+                'prod_id' => $po_temp_item->prod_id,
+                'unit' => $po_temp_item->unit,
+                'unit_qty' => $po_temp_item->unit_qty,
+                'arrived_qty' => 0
+            );
+            $this->po_details->save($data_po_items);
+        }
+        $this->po_temp->truncate_table();
+
         echo json_encode(array("status" => TRUE));
     }
  

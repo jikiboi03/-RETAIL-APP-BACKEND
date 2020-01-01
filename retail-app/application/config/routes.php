@@ -118,6 +118,8 @@ $route['showlist-po-temp'] = 'PO_temp/PO_temp_controller/ajax_list';
 
 $route['add-po-temp'] = 'PO_temp/PO_temp_controller/ajax_add';
 
+$route['set-po-temp'] = 'PO_temp/PO_temp_controller/ajax_set';
+
 $route['edit-po-temp/(:num)'] = 'PO_temp/PO_temp_controller/ajax_edit/$1';
 
 $route['update-po-temp'] = 'PO_temp/PO_temp_controller/ajax_update';

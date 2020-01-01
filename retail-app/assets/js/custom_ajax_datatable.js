@@ -204,10 +204,6 @@ $(document).ready(function()
                 },
                 {
                       "targets": 5,
-                      "className": "text-right",
-                },
-                {
-                      "targets": 6,
                       "className": "text-center",
                 },
                 ],
@@ -1058,9 +1054,90 @@ $(document).ready(function()
                 "scrollX": true              
             });           
     }
-         
+    
+    // supplier and date listener
+    $("#supplier_id").change(function()
+    {
+        set_po_temp();        
+    });
+
+    $("#po_date").change(function()
+    {
+        set_po_temp();        
+    });
 });
 
+// ========================================================== PO TEMP FORM SECTION ====================================
+
+function set_po_temp()
+{
+    const url = 'set-po-temp';
+    const $form = '#form-po-set';
+    
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $($form).serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+            if(data.status) //if success close modal and reload ajax table
+            {   
+                
+            }
+            else
+            {
+                
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+        }
+    });
+}
+
+function generate_po()
+{
+    // resetting errors in form validations
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.help-block').empty(); // clear error string
+    
+    const url = 'add-po';
+    const $form = '#form-po-set';
+    
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $($form).serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+            if(data.status) //if success close modal and reload ajax table
+            {   
+
+            }
+            else
+            {
+                {
+                    for (var i = 0; i < data.inputerror.length; i++) 
+                    {
+                        $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                        $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                    }
+                }
+                $('#btnSave').text('Save'); //change button text
+                $('#btnSave').attr('disabled',false); //set button enable 
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+        }
+    });
+}
 
 // ========================================================== TRANSACTION DETAILS FORM SECTION ====================================
 
@@ -1087,6 +1164,11 @@ function go_to_cancelled_trans() // ---> calling for rgo back page
 function go_to_refunded_trans() // ---> calling for rgo back page
 {
     window.location.href='../transactions-page-refunded';
+}
+
+function go_to_stocks() // ---> calling for rgo back page
+{
+    window.location.href='items-page';
 }
 
 
@@ -2069,7 +2151,7 @@ function create_po() // calling for create po function
         {
             if(data.status) //if success close modal and reload ajax table
             {   
-                alert("okay");
+                window.location.href="po-temp-page";
             }
             else
             {
@@ -2123,6 +2205,8 @@ function add_po_temp() // ---> calling for the Add Modal form
 {
     save_method = 'add-po-temp';
     text = 'Add Purchase Order Item';
+
+    $('#prod_id').prop('disabled', false);
     
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
@@ -2497,7 +2581,7 @@ function edit_po(id)
 
 function edit_po_temp(id)
 {
-    save_method = 'update-po';
+    save_method = 'update-po-temp';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
@@ -2510,10 +2594,9 @@ function edit_po_temp(id)
         success: function(data)
         {
             $('[name="num"]').val(data.num);
-            $('[name="item_id"]').val(data.item_id);
-            $('[name="unit_id"]').val(data.unit_id);
+            $('[name="prod_id"]').val(data.prod_id).prop('selected', true);
             $('[name="unit_qty"]').val(data.unit_qty);
-            $('[name="pcs_qty"]').val(data.pcs_qty);
+            $('[name="unit"]').val(data.unit);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Purchase Order Item'); // Set title to Bootstrap modal title
@@ -3009,7 +3092,6 @@ function save()
     {
         url = "update-store-config";
     }
-
     else if(save_method == 'add-prod-detail') 
     {
         url = "../add-prod-detail";
@@ -3026,73 +3108,6 @@ function save()
     {
         url = "../update-pack-detail";
     }
-
-
-
-
-
-
-    else if(save_method == 'add-atm') 
-    {
-        url = "atm/atm_controller/ajax_add";
-    }
-    else if(save_method == 'update-atm') 
-    {
-        url = "atm/atm_controller/ajax_update";
-    }
-    else if(save_method == 'add-loan') 
-    {
-        url = "../profiles/profiles_controller/ajax_add";
-    }
-    else if(save_method == 'update-loan') 
-    {
-        url = "../profiles/profiles_controller/ajax_update";
-    }
-    else if(save_method == 'update-loan-date-remarks') 
-    {
-        $form = '#form_edit_date_remarks';
-        url = "../profiles/profiles_controller/ajax_update_date_remarks";
-    }
-    else if(save_method == 'add-payment') 
-    {
-        $form = '#form_add_payment';
-        url = "../../../transactions/transactions_controller/ajax_paid";
-    }
-    else if(save_method == 'add-interest') 
-    {
-        $form = '#form_add_interest';
-        url = "../../../transactions/transactions_controller/ajax_add_interest";
-    }
-    else if(save_method == 'adjust-loan') 
-    {
-        $form = '#form_adjust_loan';
-        url = "../../../transactions/transactions_controller/ajax_adjustment";
-    }
-    else if(save_method == 'update-trans-date-remarks') 
-    {
-        $form = '#form_edit_date_remarks';
-        url = "../../../transactions/transactions_controller/ajax_update";
-    }
-    else if(save_method == 'adjust-capital') 
-    {
-        $form = '#form';
-        url = "capital/capital_controller/ajax_add";
-    }
-    else if(save_method == 'update-capital-date-remarks') 
-    {
-        $form = '#form_edit_date_remarks';
-        url = "capital/capital_controller/ajax_update";
-    }
-    
-    else if(save_method == 'add-schedule') 
-    {
-        url = "Schedules/Schedules_controller/ajax_add";
-    }
-    else if(save_method == 'update-schedule') 
-    {
-        url = "Schedules/Schedules_controller/ajax_update";
-    }
-
     else if(save_method == 'add-user') 
     {
         url = "add-user";
@@ -3207,22 +3222,6 @@ function save()
 
                     set_system_log(log_type, details);
                 }
-                // else if(save_method == 'add-po-temp') 
-                // {
-                //     log_type = 'Add';
-
-                //     details = 'New purchase order item added: PO' + $('[name="po_id"]').val();
-
-                //     set_system_log(log_type, details);
-                // }
-                // else if(save_method == 'update-po-temp') 
-                // {
-                //     log_type = 'Update';
-
-                //     details = 'Purchase order updated PO' + $('[name="po_id"]').val();
-
-                //     set_system_log(log_type, details);
-                // }
                 else if(save_method == 'add-product')
                 {
                     log_type = 'Add';
@@ -3661,23 +3660,17 @@ function set_system_log_three(log_type, details)
 
 
 
-function delete_item(id, name)
+function delete_po_temp(id)
 {
     if(confirm('Are you sure to delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "delete-item/"+id,
+            url : "delete-po-temp/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
             {
-                var log_type = 'Delete';
-
-                var details = 'Item deleted I' + id; 
-
-                set_system_log(log_type, details);
-
                 //if success reload ajax table
                 $('#modal_form').modal('hide');
                 reload_table();

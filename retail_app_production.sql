@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2019 at 05:12 PM
+-- Generation Time: Jan 01, 2020 at 05:05 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -1086,7 +1086,18 @@ INSERT INTO `logs` (`log_id`, `user_fullname`, `log_type`, `details`, `date_time
 (961, 'e, Efren', 'Logout', 'System user logout as Staff', '2019-12-17 20:58:15'),
 (962, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-17 20:58:23'),
 (963, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-18 22:06:14'),
-(964, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-19 20:54:18');
+(964, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-19 20:54:18'),
+(965, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-20 23:44:42'),
+(966, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-21 10:06:52'),
+(967, ', ', 'Logout', 'System user logout as Staff', '2019-12-22 09:48:39'),
+(968, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-22 09:48:48'),
+(969, 'test', 'Add', 'New%20supplier%20added:%20SM%20Lanang', '2019-12-22 11:25:19'),
+(970, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-23 22:21:29'),
+(971, ', ', 'Logout', 'System user logout as Staff', '2019-12-29 11:58:22'),
+(972, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-29 11:58:27'),
+(973, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-31 20:33:46'),
+(974, ', ', 'Logout', 'System user logout as Staff', '2020-01-01 21:57:04'),
+(975, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-01 21:57:10');
 
 -- --------------------------------------------------------
 
@@ -1152,6 +1163,20 @@ CREATE TABLE `po` (
   `encoded` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `po`
+--
+
+INSERT INTO `po` (`po_id`, `supplier_id`, `user_id`, `date`, `status`, `encoded`) VALUES
+(1, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 22:04:55'),
+(2, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:23:55'),
+(3, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:27:20'),
+(4, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:35:32'),
+(5, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:41:20'),
+(6, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:44:44'),
+(7, 1, 120, '2020-01-01', 'PENDING', '2020-01-02 00:02:13'),
+(8, 1, 120, '2020-01-01', 'PENDING', '2020-01-02 00:04:22');
+
 -- --------------------------------------------------------
 
 --
@@ -1186,13 +1211,39 @@ INSERT INTO `pos` (`pos_id`, `pos_name`, `hardware_id`, `software_id`, `receipt_
 --
 
 CREATE TABLE `po_details` (
-  `po_id` int(11) DEFAULT NULL,
-  `num` int(11) DEFAULT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `unit_id` int(11) DEFAULT NULL,
+  `po_id` int(11) NOT NULL,
+  `num` int(11) NOT NULL,
+  `prod_id` int(11) DEFAULT NULL,
+  `unit` varchar(20) DEFAULT NULL,
   `unit_qty` int(11) DEFAULT NULL,
-  `pcs_qty` int(11) DEFAULT NULL
+  `arrived_qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `po_details`
+--
+
+INSERT INTO `po_details` (`po_id`, `num`, `prod_id`, `unit`, `unit_qty`, `arrived_qty`) VALUES
+(4, 1, 72, 'pcs', 14, 0),
+(4, 17, 74, 'pcs', 5, 0),
+(4, 25, 68, 'pcs', 4, 0),
+(4, 26, 63, 'pcs', 0, 0),
+(4, 27, 76, 'pcs', 0, 0),
+(4, 28, 77, 'pcs', 0, 0),
+(4, 29, 78, 'pcs', 0, 0),
+(4, 38, 53, 'pcs', 3, 0),
+(4, 39, 2, 'pcs', 2, 0),
+(6, 1, 72, 'pcs', 14, 0),
+(6, 17, 74, 'pcs', 5, 0),
+(6, 25, 68, 'pcs', 4, 0),
+(6, 26, 63, 'pcs', 0, 0),
+(6, 27, 76, 'pcs', 0, 0),
+(6, 28, 77, 'pcs', 0, 0),
+(6, 29, 78, 'pcs', 0, 0),
+(6, 38, 53, 'pcs', 3, 0),
+(6, 39, 2, 'pcs', 2, 0),
+(7, 1, 63, 'pcs', 6, 0),
+(8, 1, 63, 'pcs', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -1201,25 +1252,30 @@ CREATE TABLE `po_details` (
 --
 
 CREATE TABLE `po_temp` (
-  `num` int(11) NOT NULL,
-  `prod_id` int(11) DEFAULT NULL,
-  `unit` varchar(20) DEFAULT NULL,
-  `unit_qty` int(11) DEFAULT NULL
+  `id` int(1) NOT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `date` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `po_temp`
 --
 
-INSERT INTO `po_temp` (`num`, `prod_id`, `unit`, `unit_qty`) VALUES
-(1, 84, 'pcs', 0),
-(2, 85, 'pcs', 0),
-(3, 83, 'pcs', 0),
-(4, 78, 'pcs', 0),
-(5, 76, 'pcs', 0),
-(6, 82, 'pcs', 0),
-(7, 77, 'pcs', 0),
-(8, 79, 'pcs', 0);
+INSERT INTO `po_temp` (`id`, `supplier_id`, `date`) VALUES
+(1, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `po_temp_details`
+--
+
+CREATE TABLE `po_temp_details` (
+  `num` int(11) NOT NULL,
+  `prod_id` int(11) DEFAULT NULL,
+  `unit` varchar(20) DEFAULT NULL,
+  `unit_qty` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1410,6 +1466,13 @@ CREATE TABLE `suppliers` (
   `encoded` datetime NOT NULL DEFAULT current_timestamp(),
   `removed` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`supplier_id`, `name`, `address`, `city`, `contact`, `email`, `encoded`, `removed`) VALUES
+(1, 'SM Lanang', 'Lanang', 'Davao City', '0998989898', 'sm@a.com', '2019-12-22 11:25:19', 0);
 
 -- --------------------------------------------------------
 
@@ -30123,6 +30186,12 @@ ALTER TABLE `pos`
 -- Indexes for table `po_temp`
 --
 ALTER TABLE `po_temp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `po_temp_details`
+--
+ALTER TABLE `po_temp_details`
   ADD PRIMARY KEY (`num`);
 
 --
@@ -30223,7 +30292,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=965;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=976;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -30241,7 +30310,7 @@ ALTER TABLE `pack_discounts`
 -- AUTO_INCREMENT for table `po`
 --
 ALTER TABLE `po`
-  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pos`
@@ -30250,10 +30319,10 @@ ALTER TABLE `pos`
   MODIFY `pos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `po_temp`
+-- AUTO_INCREMENT for table `po_temp_details`
 --
-ALTER TABLE `po_temp`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `po_temp_details`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -30277,7 +30346,7 @@ ALTER TABLE `store_config`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `s_readings`

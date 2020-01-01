@@ -1,15 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class PO_temp_model extends CI_Model {
+class PO_details_model extends CI_Model {
  
-    var $table = 'po_temp_details';
-    var $table_set = 'po_temp';
+    var $table = 'po_details';
 
-    var $column_order = array('num','prod_id','prod_name','unit_qty','unit',null); //set column field database for datatable orderable
-    var $column_search = array('po_temp_details.prod_id','products.name','unit_qty','unit'); //set column field database for datatable searchable
+    var $column_order = array('num','prod_id','unit','unit_qty'); //set column field database for datatable orderable
+    var $column_search = array('num','prod_id','unit','unit_qty'); //set column field database for datatable searchable
 
-    var $order = array('num' => 'asc'); // date descending order 
+    var $order = array('num' => 'asc'); // default order 
  
     public function __construct()
     {
@@ -19,11 +18,10 @@ class PO_temp_model extends CI_Model {
  
     private function _get_datatables_query()
     {
-         
-        $this->db->select('po_temp_details.*, products.name AS prod_name');
+        $this->db->select('po_details.*, products.name');
         $this->db->from($this->table);
 
-        $this->db->join('products', 'products.prod_id = po_temp_details.prod_id');
+        $this->db->join('products', 'products.prod_id = po_details.prod_id');
  
         $i = 0;
      
@@ -71,27 +69,54 @@ class PO_temp_model extends CI_Model {
 
     function get_api_datatables() // api function in getting data list
     {        
-        $this->db->select('po_temp_details.*, products.name AS prod_name');
+        $this->db->select('po.*, suppliers.name, users.username');
         $this->db->from($this->table);
 
-        $this->db->join('products', 'products.prod_id = po_temp_details.prod_id');
+        $this->db->join('suppliers', 'suppliers.supplier_id = po.supplier_id');
+        $this->db->join('users', 'users.user_id = po.user_id');
+        
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // check for duplicates in the database table for validation
+    function get_duplicates($name)
+    {      
+        $this->db->from($this->table);
+        $this->db->where('name',$name);
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    // get both id and names
+    function get_items()
+    {
+        $this->db->select('po.*, suppliers.name, users.username');
+        $this->db->from($this->table);
+
+        $this->db->join('suppliers', 'suppliers.supplier_id = po.supplier_id');
+        $this->db->join('users', 'users.user_id = po.user_id');
+
+        $this->db->order_by("po_id", "desc");
 
         $query = $this->db->get();
 
         return $query->result();
     }
 
-    // get both id and names
-    function get_po_temp_items()
+    function get_supplier_id($po_id)
     {
-        $this->db->select('po_temp_details.*, products.name AS prod_name');
+        $this->db->select('supplier_id');
         $this->db->from($this->table);
-
-        $this->db->join('products', 'products.prod_id = po_temp_details.prod_id');
+        $this->db->where('po_id',$po_id);
 
         $query = $this->db->get();
 
-        return $query->result();
+        $row = $query->row();
+
+        return $row->supplier_id;
     }
  
     function count_filtered()
@@ -109,21 +134,10 @@ class PO_temp_model extends CI_Model {
         return $this->db->count_all_results();
     }
  
-    public function get_by_id($num)
+    public function get_by_id($po_id)
     {
         $this->db->from($this->table);
-        $this->db->where('num',$num);
-
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
-
-    public function get_set_by_id($num)
-    {
-        $this->db->from($this->table_set);
-        $this->db->where('id',$num);
-
+        $this->db->where('po_id',$po_id);
         $query = $this->db->get();
  
         return $query->row();
@@ -134,43 +148,10 @@ class PO_temp_model extends CI_Model {
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
-
-    public function set($where, $data)
-    {
-        $this->db->update($this->table_set, $data, $where);
-        return $this->db->affected_rows();
-    }
  
     public function update($where, $data)
     {
         $this->db->update($this->table, $data, $where);
         return $this->db->affected_rows();
-    }
-
-    public function delete_by_id($num)
-    {
-        $this->db->where('num', $num);
-        $this->db->delete($this->table);
-    }
-
-    public function truncate_table()
-    {
-        $data = array(
-            'supplier_id' => "",
-            'date' => "",
-        );
-        $this->db->update($this->table_set, $data, array('id' => 1));
-        $this->db->truncate($this->table);
-    }
-
-    // check for duplicates in the database table for validation
-    function get_duplicates($prod_id)
-    {      
-        $this->db->from($this->table);
-        $this->db->where('prod_id',$prod_id);
-
-        $query = $this->db->get();
-
-        return $query;
     }
 }
