@@ -18,7 +18,7 @@ class PO_details_model extends CI_Model {
  
     private function _get_datatables_query()
     {
-        $this->db->select('po_details.*, products.name');
+        $this->db->select('po_details.*, products.name as prod_name');
         $this->db->from($this->table);
 
         $this->db->join('products', 'products.prod_id = po_details.prod_id');
@@ -56,12 +56,14 @@ class PO_details_model extends CI_Model {
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
- 
-    function get_datatables()
+
+    function get_datatables($po_id)
     {        
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
         $this->db->limit($_POST['length'], $_POST['start']);
+
+        $this->db->where('po_id',$po_id); // if data is part of the object by ID
 
         $query = $this->db->get();
         return $query->result();

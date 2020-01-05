@@ -38,7 +38,7 @@
                             <h3 class="panel-title">Purchase Orders Information Table</h3>
                         </div>
                         <div class="panel-body">
-                            <button class="btn btn-success" onclick="add_po()"><i class="fa fa-plus-square"></i> &nbsp;Add New P.O.</button>
+                        <button class="btn btn-success" onclick="create_po()"><i class="fa fa-plus-square"></i> &nbsp;Create PO</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                             <br><br>
                             <table id="purhcase-order-table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 14px;">

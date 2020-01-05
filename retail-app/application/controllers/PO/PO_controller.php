@@ -46,7 +46,7 @@ class PO_controller extends CI_Controller {
             $row[] = $po->encoded;
 
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="View" onclick="view_po('."'".$po->po_id."'".')" disabled><i class="fa fa-eye"></i> </a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="View" onclick="view_po('."'".$po->po_id."'".')"><i class="fa fa-eye"></i> </a>';
  
             $data[] = $row;
         }

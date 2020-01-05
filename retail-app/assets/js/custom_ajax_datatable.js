@@ -210,6 +210,41 @@ $(document).ready(function()
                 "scrollX": true
             });
     }
+    else if(tableID == "po-details-table")
+    {
+            // get id
+            const po_id = $("#po_id").val();
+
+            table = $('#po-details-table').DataTable({ 
+         
+                "processing": true, //Feature control the processing indicator.
+                "serverSide": true, //Feature control DataTables' server-side processing mode.
+                "order": [], //Initial no order.
+         
+                // Load data for the table's content from an Ajax source
+                "ajax": {
+                    "url": "../showlist-po-details/" + po_id,
+                    "type": "POST",
+                },
+         
+                //Set column definition initialisation properties.
+                "columnDefs": [
+                { 
+                    "targets": [ -1 ], //last column
+                    "orderable": false, //set not orderable
+                },
+                {
+                      "targets": 3,
+                      "className": "text-right",
+                },
+                {
+                      "targets": 5,
+                      "className": "text-center",
+                },
+                ],
+                "scrollX": true
+            });
+    }
     else if(tableID == "sold-today-table")
     {
             table = $('#sold-today-table').DataTable({ 
@@ -2057,9 +2092,9 @@ function view_transaction(trans_id)
      window.location.href='trans-details-page/' + trans_id;
 }
 
-function view_loan(client_id, loan_id)
+function view_po(po_id)
 {
-     window.location.href='transactions-page/' + client_id + '/' + loan_id;
+     window.location.href='po-details-page/' + po_id;
 }
 
 function edit_privileges(id) // for customer table

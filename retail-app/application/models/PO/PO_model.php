@@ -18,7 +18,7 @@ class PO_model extends CI_Model {
  
     private function _get_datatables_query()
     {
-        $this->db->select('po.*, suppliers.name, users.username');
+        $this->db->select('po.*, suppliers.name as supplier_name, users.username as username');
         $this->db->from($this->table);
 
         $this->db->join('suppliers', 'suppliers.supplier_id = po.supplier_id');
