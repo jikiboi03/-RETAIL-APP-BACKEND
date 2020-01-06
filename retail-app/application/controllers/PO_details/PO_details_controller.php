@@ -54,9 +54,9 @@ class PO_details_controller extends CI_Controller {
             $row[] = $po_details->arrived_qty;
 
             //add html for action
-            $row[] = '<a class="btn btn-info" href="javascript:void(0)" title="Edit" onclick="edit_po_details('."'".$po_details->num."'".')"><i class="fa fa-pencil-square-o"></i></a>
+            $row[] = '<a class="btn btn-info" href="javascript:void(0)" title="Edit" onclick="edit_po_detail('."'".$po_details->num."'".')"><i class="fa fa-pencil-square-o"></i></a>
                       
-                      <a class="btn btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_po_details('."'".$po_details->num."'".')"><i class="fa fa-trash"></i></a>';
+                      <a class="btn btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_po_detail('."'".$po_details->num."'".')"><i class="fa fa-trash"></i></a>';
  
             $data[] = $row;
         }
@@ -102,6 +102,7 @@ class PO_details_controller extends CI_Controller {
         $this->_validate_edit();
         $data = array(
                 'unit_qty' => $this->input->post('unit_qty'),
+                'arrived_qty' => $this->input->post('arrived_qty'),
             );
         $this->po_details->update(array('num' => $this->input->post('num')), $data);
         echo json_encode(array("status" => TRUE));

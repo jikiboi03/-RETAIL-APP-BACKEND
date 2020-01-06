@@ -118,7 +118,7 @@ $route['showlist-po-details/(:num)'] = 'PO_details/PO_details_controller/ajax_li
 
 $route['add-po-detail'] = 'PO_details/PO_details_controller/ajax_add';
 
-$route['edit-po-detail/(:num)/(:num)'] = 'PO_details/PO_details_controller/ajax_edit/$1/$2';
+$route['edit-po-detail/(:num)'] = 'PO_details/PO_details_controller/ajax_edit/$1';
 
 $route['update-po-detail'] = 'PO_details/PO_details_controller/ajax_update';
 
@@ -145,6 +145,8 @@ $route['edit-po-temp/(:num)'] = 'PO_temp/PO_temp_controller/ajax_edit/$1';
 $route['update-po-temp'] = 'PO_temp/PO_temp_controller/ajax_update';
 
 $route['delete-po-temp/(:num)'] = 'PO_temp/PO_temp_controller/ajax_delete/$1';
+
+$route['truncate-po-temp'] = 'PO_temp/PO_temp_controller/ajax_truncate';
 
 //======================================== API SECTION =================================================================
 

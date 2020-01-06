@@ -68,3 +68,7 @@
             </div>
             <!--===================================================-->
             <!--END CONTENT CONTAINER-->
+
+            <form action="#" id="form" class="form-horizontal">
+                <input type="hidden" value="" name="selected" id="selected"/>
+            </form>

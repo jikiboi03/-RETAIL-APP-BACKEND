@@ -101,11 +101,9 @@ class PO_controller extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'supplier_id' => $this->input->post('supplier_id'),
-                'user_id' => $this->input->post('user_id'),
-                'date' => $this->input->post('date'),
-                'status' => $this->input->post('status'),
-            );
+            'supplier_id' => $this->input->post('supplier_id'),
+            'date' => $this->input->post('date')
+        );
         $this->po->update(array('po_id' => $this->input->post('po_id')), $data);
         echo json_encode(array("status" => TRUE));
     }

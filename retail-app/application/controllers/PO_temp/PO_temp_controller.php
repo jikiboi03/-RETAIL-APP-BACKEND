@@ -120,6 +120,14 @@ class PO_temp_controller extends CI_Controller {
         echo json_encode(array("status" => TRUE));
     }
 
+    // clear all
+    public function ajax_truncate()
+    {
+        $this->po_temp->truncate_table();
+        echo json_encode(array("status" => TRUE));
+    }
+
+
     private function _validate()
     {
         $data = array();

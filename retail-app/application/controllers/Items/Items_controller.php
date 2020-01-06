@@ -79,17 +79,23 @@ class Items_controller extends CI_Controller {
  
     public function ajax_add()
     {
-        $prod_ids = explode(',',  $this->input->post('selected'));
-        foreach ($prod_ids as $prod_id) {
-            $duplicates = $this->po_temp->get_duplicates($prod_id);
-            if ($duplicates->num_rows() == 0)
-            {
-                $data = array(
-                    'prod_id' => $prod_id,
-                    'unit' => 'pcs',
-                    'unit_qty' => 0
-                );
-                $insert = $this->po_temp->save($data);
+        $selected = $this->input->post('selected');
+
+        if ($selected != '')
+        {
+            $prod_ids = explode(',', $selected);
+        
+            foreach ($prod_ids as $prod_id) {
+                $duplicates = $this->po_temp->get_duplicates($prod_id);
+                if ($duplicates->num_rows() == 0)
+                {
+                    $data = array(
+                        'prod_id' => $prod_id,
+                        'unit' => 'pcs',
+                        'unit_qty' => 0
+                    );
+                    $insert = $this->po_temp->save($data);
+                }
             }
         }
         echo json_encode(array("status" => TRUE));

@@ -24,7 +24,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('dashboard');?>">Dashboard</a></li>
-        <li><a href="<?php echo base_url('/products-page');?>">PO List</a></li>
+        <li><a href="<?php echo base_url('/po-page');?>">PO List</a></li>
         <li class="active">PO<?php echo $po->po_id ?></li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -39,7 +39,13 @@
 
 
             <div class="panel-heading">
-                <h3 class="panel-title"><b>PO<?php echo $po->po_id; ?></b></h3>
+                <div class="form-group col-md-10">
+                    <h3 class="panel-title"><b>PO<?php echo $po->po_id; ?></b></h3>
+                </div>
+                <div class="form-group col-md-2" align="right">
+                    <br/>
+                    <button class="btn btn-default" onclick="go_to_po_list()"><i class="fa fa-reply"></i> &nbsp;Back to PO list</button>
+                </div>
             </div>
 
             <div class="form-body">
@@ -49,7 +55,9 @@
 
                 <label class="control-label col-md-4">Date: <h4><?php echo $po->date; ?></h4></label>
 
-                <label class="control-label col-md-2">Created by: <h4><?php echo $po->user_id; // get name instead of id ?></h4></label>                            
+                <label class="control-label col-md-2">Created by: <h4><?php echo $po->user_id; // get name instead of id ?></h4></label>
+
+                <label class="control-label col-md-2">Created by: <h4><?php echo $po->status; // get name instead of id ?></h4></label>                            
                 
             </div>   
             </div>
@@ -59,7 +67,13 @@
             <hr style="background-color: #ccccff; height: 3px;">
 
             <div class="panel-heading">
-                <h3 class="panel-title">PO Details Table</h3>
+                <div class="form-group col-md-6">
+                    <h3 class="panel-title">PO Details Table</h3>
+                </div>
+                <div class="form-group col-md-6" align="right">
+                    <button class="btn btn-danger" style="font-size: 15px;"  onclick="generate_po()"><i class="fa fa-cog"></i> &nbsp;Cancel PO</button>
+                    <button class="btn btn-primary" style="font-size: 15px;"  onclick="generate_po()"><i class="fa fa-cog"></i> &nbsp;Complete PO</button>
+                </div>
             </div>
             <hr>
             </div>
@@ -76,7 +90,7 @@
                     <div class="form-body">
                         <div class="form-group col-md-8">
                             <div>
-                                <select name="supplier_id" id="supplier_id" class="form-control" style="font-size: 15px;">
+                                <select name="supplier_id" id="supplier_id_final" class="form-control" style="font-size: 15px;">
                                     <option value="">--Select Supplier--</option>
                                     <?php 
                                         foreach($suppliers as $row)
@@ -98,15 +112,12 @@
                         </div>
                         <div class="form-group col-md-4">
                             <div>
-                                <input name="date" id="po_date" class="form-control" type="date" value=<?php echo $po->date ?>>
+                                <input name="date" id="po_date_final" class="form-control" type="date" value=<?php echo $po->date ?>>
                                 <span class="help-block"></span>
                             </div>
                         </div>
                     </div>
                 </form>
-                <div class="form-group col-md-2" align="right">
-                    <button class="btn btn-default" onclick="go_to_stocks()"><i class="fa fa-reply"></i> &nbsp;Back to stocks</button>
-                </div>
                 <br><br>
                 <table id="po-details-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
@@ -169,6 +180,14 @@
                             <label class="control-label col-md-3">Quantity:</label>
                             <div class="col-md-9">
                                 <input name="unit_qty" placeholder="Enter unit quantity" class="form-control" type="number">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Arrived quantity:</label>
+                            <div class="col-md-9">
+                                <input name="arrived_qty" placeholder="Enter arrived quantity" class="form-control" type="number">
                                 <span class="help-block"></span>
                             </div>
                         </div>

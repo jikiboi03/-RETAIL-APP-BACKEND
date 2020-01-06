@@ -137,10 +137,10 @@ class PO_details_model extends CI_Model {
         return $this->db->count_all_results();
     }
  
-    public function get_by_id($po_id)
+    public function get_by_id($num)
     {
         $this->db->from($this->table);
-        $this->db->where('po_id',$po_id);
+        $this->db->where('num',$num);
         $query = $this->db->get();
  
         return $query->row();

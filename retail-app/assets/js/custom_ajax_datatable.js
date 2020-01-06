@@ -1100,6 +1100,17 @@ $(document).ready(function()
     {
         set_po_temp();        
     });
+
+    // supplier and date listener
+    $("#supplier_id_final").change(function()
+    {
+        set_po_final();        
+    });
+
+    $("#po_date_final").change(function()
+    {
+        set_po_final();        
+    });
 });
 
 // ========================================================== PO TEMP FORM SECTION ====================================
@@ -1107,6 +1118,35 @@ $(document).ready(function()
 function set_po_temp()
 {
     const url = 'set-po-temp';
+    const $form = '#form-po-set';
+    
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $($form).serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+            if(data.status) //if success close modal and reload ajax table
+            {   
+                
+            }
+            else
+            {
+                
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+        }
+    });
+}
+
+function set_po_final()
+{
+    const url = '../update-po';
     const $form = '#form-po-set';
     
     // ajax adding data to database
@@ -1152,7 +1192,7 @@ function generate_po()
         {
             if(data.status) //if success close modal and reload ajax table
             {   
-
+                go_to_stocks();
             }
             else
             {
@@ -1180,30 +1220,29 @@ function reload_page() // ---> calling for reload page
 {
     location.reload();
 }
-
 function go_to_ongoing_trans() // ---> calling for rgo back page
 {
     window.location.href='../transactions-page';
 }
-
 function go_to_cleared_trans() // ---> calling for rgo back page
 {
     window.location.href='../transactions-page-cleared';
 }
-
 function go_to_cancelled_trans() // ---> calling for rgo back page
 {
     window.location.href='../transactions-page-cancelled';
 }
-
 function go_to_refunded_trans() // ---> calling for rgo back page
 {
     window.location.href='../transactions-page-refunded';
 }
-
 function go_to_stocks() // ---> calling for rgo back page
 {
     window.location.href='items-page';
+}
+function go_to_po_list() // ---> calling for rgo back page
+{
+    window.location.href='../po-page';
 }
 
 
@@ -2635,7 +2674,36 @@ function edit_po_temp(id)
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Purchase Order Item'); // Set title to Bootstrap modal title
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+
+function edit_po_detail(id)
+{
+    save_method = 'update-po-detail';
+    $('#form')[0].reset(); // reset form on modals
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.help-block').empty(); // clear error string
  
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "../edit-po-detail/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            $('[name="num"]').val(data.num);
+            $('[name="prod_id"]').val(data.prod_id).prop('selected', true);
+            $('[name="unit_qty"]').val(data.unit_qty);
+            $('[name="unit"]').val(data.unit);
+            $('[name="arrived_qty"]').val(data.arrived_qty);
+
+            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Edit Purchase Order Item'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -3066,6 +3134,10 @@ function save()
     else if(save_method == 'update-po-temp') 
     {
         url = "update-po-temp";
+    }
+    else if(save_method == 'update-po-detail') 
+    {
+        url = "../update-po-detail";
     }
     else if(save_method == 'add-product') 
     {
@@ -3787,12 +3859,29 @@ function delete_po_temp(id, name)
             dataType: "JSON",
             success: function(data)
             {
-                // var log_type = 'Delete';
-
-                // var details = 'Purchase odeleted SU' + id; 
-
-                // set_system_log(log_type, details);
-
+                //if success reload ajax table
+                $('#modal_form').modal('hide');
+                reload_table();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error deleting data');
+            }
+        });
+ 
+    }
+}
+function truncate_po_table()
+{
+    if(confirm('Are you sure to clear all data?'))
+    {
+        // ajax delete data to database
+        $.ajax({
+            url : "truncate-po-temp",
+            type: "POST",
+            dataType: "JSON",
+            success: function(data)
+            {
                 //if success reload ajax table
                 $('#modal_form').modal('hide');
                 reload_table();

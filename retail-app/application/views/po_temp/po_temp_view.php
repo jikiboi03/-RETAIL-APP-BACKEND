@@ -41,7 +41,7 @@
                 <div class="form-group col-md-4">
                     <button class="btn btn-success" onclick="add_po_temp()"><i class="fa fa-plus-square"></i> &nbsp;Add new PO item</button>
                     <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
-                    <button class="btn btn-danger" onclick="reload_table()"><i class="fa fa-times"></i> &nbsp;Clear all</button>
+                    <button class="btn btn-danger" onclick="truncate_po_table()"><i class="fa fa-times"></i> &nbsp;Clear all</button>
                 </div>
                 <form action="#" id="form-po-set" class="form-horizontal col-md-6">
                     <div class="form-body">
