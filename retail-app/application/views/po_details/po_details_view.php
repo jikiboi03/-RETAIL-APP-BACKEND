@@ -145,6 +145,7 @@
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
+                    <input type="hidden" value=<?php echo $po->po_id ?> name="po_id"/>
                     <input type="hidden" value="" name="num"/>
                     <div class="form-body">
 

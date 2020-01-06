@@ -85,10 +85,9 @@ class PO_controller extends CI_Controller {
             // insert po item to po_details from po_temp_details ------------------------
             $data_po_items = array(
                 'po_id' => $insert,
-                'num' => $po_temp_item->num,
                 'prod_id' => $po_temp_item->prod_id,
-                'unit' => $po_temp_item->unit,
                 'unit_qty' => $po_temp_item->unit_qty,
+                'unit' => $po_temp_item->unit,
                 'arrived_qty' => 0
             );
             $this->po_details->save($data_po_items);

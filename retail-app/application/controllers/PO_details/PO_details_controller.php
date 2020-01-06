@@ -73,35 +73,27 @@ class PO_details_controller extends CI_Controller {
  
     public function ajax_edit($num)
     {
-        $data = $this->po_temp->get_by_id($num);
+        $data = $this->po_details->get_by_id($num);
         echo json_encode($data);
     }
  
     public function ajax_add()
     {
         $this->_validate();
+        $po_id = $this->input->post('po_id');
         $prod_id = $this->input->post('prod_id');
-        $duplicates = $this->po_temp->get_duplicates($prod_id);
+        $duplicates = $this->po_details->get_duplicates($po_id, $prod_id);
         if ($duplicates->num_rows() == 0)
         {
             $data = array(
+                'po_id' => $po_id,
                 'prod_id' => $prod_id,
                 'unit_qty' => $this->input->post('unit_qty'),
                 'unit' => 'pcs',
+                'arrived_qty' => 0,
             );
-            $insert = $this->po_temp->save($data);
+            $insert = $this->po_details->save($data);
         }
-        echo json_encode(array("status" => TRUE));
-    }
-
-    public function ajax_set()
-    {
-        $data = array(
-            'supplier_id' => $this->input->post('supplier_id'),
-            'date' => $this->input->post('date')
-        );
-        $this->po_temp->set(array('id' => 1), $data);
-
         echo json_encode(array("status" => TRUE));
     }
  
@@ -111,14 +103,14 @@ class PO_details_controller extends CI_Controller {
         $data = array(
                 'unit_qty' => $this->input->post('unit_qty'),
             );
-        $this->po_temp->update(array('num' => $this->input->post('num')), $data);
+        $this->po_details->update(array('num' => $this->input->post('num')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
     // delete a record
     public function ajax_delete($num)
     {
-        $this->po_temp->delete_by_id($num);
+        $this->po_details->delete_by_id($num);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -139,7 +131,7 @@ class PO_details_controller extends CI_Controller {
         }
         else 
         {
-            $duplicates = $this->po_temp->get_duplicates($prod_id);
+            $duplicates = $this->po_details->get_duplicates($prod_id);
             if($duplicates->num_rows() != 0)
             {
                 $data['inputerror'][] = 'prod_id';

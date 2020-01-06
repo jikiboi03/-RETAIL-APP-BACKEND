@@ -82,10 +82,11 @@ class PO_details_model extends CI_Model {
     }
 
     // check for duplicates in the database table for validation
-    function get_duplicates($name)
+    function get_duplicates($po_id, $prod_id)
     {      
         $this->db->from($this->table);
-        $this->db->where('name',$name);
+        $this->db->where('po_id',$po_id);
+        $this->db->where('prod_id',$prod_id);
 
         $query = $this->db->get();
 
