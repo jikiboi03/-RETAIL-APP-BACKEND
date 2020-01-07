@@ -116,7 +116,7 @@ class Suppliers_model extends CI_Model {
         return $row->supplier_id;
     }
 
-    function get_item_name($supplier_id)
+    function get_supplier_name($supplier_id)
     {
         $this->db->select('name');
         $this->db->from($this->table);

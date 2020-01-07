@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2020 at 05:05 PM
+-- Generation Time: Jan 07, 2020 at 04:42 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -1097,7 +1097,29 @@ INSERT INTO `logs` (`log_id`, `user_fullname`, `log_type`, `details`, `date_time
 (972, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-29 11:58:27'),
 (973, 'e, Efren', 'Login', 'System user login as Administrator', '2019-12-31 20:33:46'),
 (974, ', ', 'Logout', 'System user logout as Staff', '2020-01-01 21:57:04'),
-(975, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-01 21:57:10');
+(975, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-01 21:57:10'),
+(976, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-03 22:15:57'),
+(977, ', ', 'Logout', 'System user logout as Staff', '2020-01-05 11:23:24'),
+(978, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-05 11:23:30'),
+(979, ', ', 'Logout', 'System user logout as Staff', '2020-01-05 23:24:07'),
+(980, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-05 23:24:11'),
+(981, ', ', 'Logout', 'System user logout as Staff', '2020-01-06 21:23:32'),
+(982, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-06 21:23:37'),
+(983, 'test', 'Add', 'New%20supplier%20added:%20Gmall', '2020-01-06 23:58:55'),
+(984, ', ', 'Logout', 'System user logout as Staff', '2020-01-07 21:38:42'),
+(985, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-07 21:39:47'),
+(986, 'test', 'Report', 'Transactions%20Report%20Generated', '2020-01-07 23:21:34'),
+(987, 'test', 'Report', 'Transactions%20Report%20Generated', '2020-01-07 23:21:43'),
+(988, 'test', 'Report', 'Menu%20Items%20Report%20Generated', '2020-01-07 23:21:50'),
+(989, 'test', 'Report', 'Menu%20Items%20Report%20Generated', '2020-01-07 23:21:55'),
+(990, 'test', 'Report', 'Menu%20Items%20Report%20Generated', '2020-01-07 23:21:59'),
+(991, 'test', 'Report', 'Menu%20Items%20Report%20Generated', '2020-01-07 23:22:16'),
+(992, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:23:21'),
+(993, 'test', 'Report', 'Products%20Report%20Generated', '2020-01-07 23:26:15'),
+(994, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:33:19'),
+(995, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:34:56'),
+(996, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:35:42'),
+(997, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:39:17');
 
 -- --------------------------------------------------------
 
@@ -1168,14 +1190,10 @@ CREATE TABLE `po` (
 --
 
 INSERT INTO `po` (`po_id`, `supplier_id`, `user_id`, `date`, `status`, `encoded`) VALUES
-(1, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 22:04:55'),
-(2, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:23:55'),
-(3, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:27:20'),
-(4, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:35:32'),
-(5, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:41:20'),
-(6, 1, 120, '2019-12-30', 'PENDING', '2020-01-01 23:44:44'),
-(7, 1, 120, '2020-01-01', 'PENDING', '2020-01-02 00:02:13'),
-(8, 1, 120, '2020-01-01', 'PENDING', '2020-01-02 00:04:22');
+(1, 1, 120, '2020-01-05', 'CANCELLED', '2020-01-06 23:08:43'),
+(2, 2, 120, '2020-01-28', 'COMPLETED', '2020-01-06 23:11:13'),
+(3, 1, 120, '2020-01-08', 'COMPLETED', '2020-01-07 23:15:33'),
+(4, 2, 120, '2020-01-07', 'CANCELLED', '2020-01-07 23:19:56');
 
 -- --------------------------------------------------------
 
@@ -1211,8 +1229,8 @@ INSERT INTO `pos` (`pos_id`, `pos_name`, `hardware_id`, `software_id`, `receipt_
 --
 
 CREATE TABLE `po_details` (
-  `po_id` int(11) NOT NULL,
   `num` int(11) NOT NULL,
+  `po_id` int(11) NOT NULL,
   `prod_id` int(11) DEFAULT NULL,
   `unit` varchar(20) DEFAULT NULL,
   `unit_qty` int(11) DEFAULT NULL,
@@ -1223,27 +1241,18 @@ CREATE TABLE `po_details` (
 -- Dumping data for table `po_details`
 --
 
-INSERT INTO `po_details` (`po_id`, `num`, `prod_id`, `unit`, `unit_qty`, `arrived_qty`) VALUES
-(4, 1, 72, 'pcs', 14, 0),
-(4, 17, 74, 'pcs', 5, 0),
-(4, 25, 68, 'pcs', 4, 0),
-(4, 26, 63, 'pcs', 0, 0),
-(4, 27, 76, 'pcs', 0, 0),
-(4, 28, 77, 'pcs', 0, 0),
-(4, 29, 78, 'pcs', 0, 0),
-(4, 38, 53, 'pcs', 3, 0),
-(4, 39, 2, 'pcs', 2, 0),
-(6, 1, 72, 'pcs', 14, 0),
-(6, 17, 74, 'pcs', 5, 0),
-(6, 25, 68, 'pcs', 4, 0),
-(6, 26, 63, 'pcs', 0, 0),
-(6, 27, 76, 'pcs', 0, 0),
-(6, 28, 77, 'pcs', 0, 0),
-(6, 29, 78, 'pcs', 0, 0),
-(6, 38, 53, 'pcs', 3, 0),
-(6, 39, 2, 'pcs', 2, 0),
-(7, 1, 63, 'pcs', 6, 0),
-(8, 1, 63, 'pcs', 6, 0);
+INSERT INTO `po_details` (`num`, `po_id`, `prod_id`, `unit`, `unit_qty`, `arrived_qty`) VALUES
+(1, 1, 80, 'pcs', 10, 0),
+(2, 1, 82, 'pcs', 10, 0),
+(3, 1, 84, 'pcs', 2, 0),
+(4, 1, 85, 'pcs', 1, 0),
+(5, 2, 18, 'pcs', 2, 2),
+(6, 2, 59, 'pcs', 4, 6),
+(7, 2, 2, 'pcs', 1, 2),
+(8, 2, 22, 'pcs', 1, 0),
+(9, 2, 63, 'pcs', 7, 8),
+(10, 3, 4, 'pcs', 2, 3),
+(11, 4, 4, 'pcs', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -1306,9 +1315,9 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `price`, `img`, `sold`, `sold_pack`, `encoded`, `removed`, `stock_in`, `stock_out`, `reorder_pt`) VALUES
 (1, 'Crispy Pata', 'CrispyPata', '', 1, '100.00', '1_2_.jpg', 244, 0, '2018-09-16 15:06:15', 0, 0, 0, 0),
-(2, 'Ampalaya con Karne', 'AmplyaCnKrne', '', 2, '85.00', '2_2_.jpg', 66, 0, '2018-09-18 12:16:33', 0, 0, 0, 0),
+(2, 'Ampalaya con Karne', 'AmplyaCnKrne', '', 2, '85.00', '2_2_.jpg', 66, 0, '2018-09-18 12:16:33', 0, 2, 0, 0),
 (3, 'Canton Guisado', 'CantonGsado', '', 1, '50.00', '', 479, 0, '2018-09-22 11:44:53', 0, 0, 0, 0),
-(4, 'Beef Caldereta', 'BeefCaldreta', '', 2, '125.00', '4_2_.jpg', 49, 0, '2018-09-22 11:46:31', 0, 0, 0, 0),
+(4, 'Beef Caldereta', 'BeefCaldreta', '', 2, '125.00', '4_2_.jpg', 49, 0, '2018-09-22 11:46:31', 0, 3, 0, 0),
 (5, 'Taro Shake', 'Taro', '', 7, '60.00', '5_2_.jpg', 44, 0, '2018-09-22 11:48:16', 0, 0, 0, 0),
 (6, 'Macha Shake', 'Macha', '', 7, '60.00', '6_2_.jpg', 50, 0, '2018-09-22 11:51:07', 0, 0, 0, 0),
 (7, 'Lechon', 'Lechon', '', 1, '95.00', '7_2_.jpg', 446, 0, '2018-09-22 11:51:44', 0, 0, 0, 0),
@@ -1322,7 +1331,7 @@ INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `pri
 (15, 'Pork Sinigang', 'PorkSinigang', '', 1, '100.00', '', 432, 0, '2018-09-24 09:17:51', 0, 0, 0, 0),
 (16, 'Spicy Pork Ribs', 'SpcyPorkRibs', '', 1, '95.00', '', 148, 0, '2018-09-24 09:18:33', 0, 0, 0, 0),
 (17, 'Lechon Sisig', 'LechonSisig', '', 1, '85.00', '', 1260, 0, '2018-09-24 09:19:00', 0, 0, 0, 0),
-(18, 'Beef Tapa', 'BeefTapa', '', 2, '128.00', '', 35, 0, '2018-09-24 09:19:39', 0, 0, 0, 0),
+(18, 'Beef Tapa', 'BeefTapa', '', 2, '128.00', '', 35, 0, '2018-09-24 09:19:39', 0, 2, 0, 0),
 (19, 'Beef Pepper Sauce', 'BeefPprSauce', '', 2, '125.00', '', 18, 0, '2018-09-24 09:20:26', 0, 0, 0, 0),
 (20, 'Beef Steak', 'BeefSteak', '', 2, '128.00', '', 86, 0, '2018-09-24 09:20:45', 0, 0, 0, 0),
 (21, 'Beef Strips', 'BeefStrips', '', 2, '150.00', '', 21, 0, '2018-09-24 09:21:06', 0, 0, 0, 0),
@@ -1363,11 +1372,11 @@ INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `pri
 (56, 'Kalamansi', 'Kalamansi', '', 6, '40.00', '', 194, 0, '2018-09-24 09:45:00', 0, 0, 0, 0),
 (57, 'Hot Tea', 'HotTea', '', 6, '30.00', '', 16, 0, '2018-09-24 09:45:20', 0, 0, 0, 0),
 (58, 'Iced Tea', 'IcedTea', '', 6, '18.00', '', 601, 0, '2018-09-24 09:45:40', 0, 0, 0, 0),
-(59, 'Brewed Coffee', 'BrwedCoffee', '', 6, '30.00', '', 9, 0, '2018-09-24 09:46:00', 0, 0, 0, 0),
+(59, 'Brewed Coffee', 'BrwedCoffee', '', 6, '30.00', '', 9, 0, '2018-09-24 09:46:00', 0, 6, 0, 0),
 (60, 'Instant Coffee', 'InstntCoffee', '', 6, '20.00', '', 43, 0, '2018-09-24 09:46:26', 0, 0, 0, 0),
 (61, 'Mango Shake', 'MngoShake', '', 7, '55.00', '', 559, 0, '2018-09-24 09:47:28', 0, 0, 0, 0),
 (62, 'Guyabano Shake', 'GuyabnoShake', '', 7, '50.00', '', 114, 0, '2018-09-24 09:47:50', 0, 0, 0, 0),
-(63, 'Avocado Shake', 'AvocadoShake', '', 7, '50.00', '', 143, 0, '2018-09-24 09:48:12', 0, 0, 0, 0),
+(63, 'Avocado Shake', 'AvocadoShake', '', 7, '50.00', '', 143, 0, '2018-09-24 09:48:12', 0, 8, 0, 0),
 (64, 'Oreo Choco Shake', 'OreoChocShke', '', 7, '50.00', '', 173, 0, '2018-09-24 09:48:39', 0, 0, 0, 0),
 (65, 'Cake', 'Cake', '', 8, '50.00', '', 0, 0, '2018-09-24 09:49:32', 0, 0, 0, 0),
 (66, 'Mango Float', 'MangoFloat', '', 8, '30.00', '', 277, 0, '2018-09-24 09:49:57', 0, 0, 0, 0),
@@ -1472,7 +1481,8 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`supplier_id`, `name`, `address`, `city`, `contact`, `email`, `encoded`, `removed`) VALUES
-(1, 'SM Lanang', 'Lanang', 'Davao City', '0998989898', 'sm@a.com', '2019-12-22 11:25:19', 0);
+(1, 'SM Lanang', 'Lanang', 'Davao City', '0998989898', 'sm@a.com', '2019-12-22 11:25:19', 0),
+(2, 'Gmall', 'bajada', 'davao', '090909090', 'g@a.com', '2020-01-06 23:58:55', 0);
 
 -- --------------------------------------------------------
 
@@ -30183,6 +30193,12 @@ ALTER TABLE `pos`
   ADD PRIMARY KEY (`pos_id`);
 
 --
+-- Indexes for table `po_details`
+--
+ALTER TABLE `po_details`
+  ADD PRIMARY KEY (`num`);
+
+--
 -- Indexes for table `po_temp`
 --
 ALTER TABLE `po_temp`
@@ -30292,7 +30308,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=976;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=998;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -30310,13 +30326,19 @@ ALTER TABLE `pack_discounts`
 -- AUTO_INCREMENT for table `po`
 --
 ALTER TABLE `po`
-  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pos`
 --
 ALTER TABLE `pos`
   MODIFY `pos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `po_details`
+--
+ALTER TABLE `po_details`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `po_temp_details`
@@ -30346,7 +30368,7 @@ ALTER TABLE `store_config`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `s_readings`

@@ -1157,7 +1157,7 @@ function complete_po() {
 		$(".form-group").removeClass("has-error"); // clear error class
 		$(".help-block").empty(); // clear error string
 
-		const url = "complete-po";
+		const url = "../complete-po";
 		const $form = "#form-po-set";
 
 		// ajax adding data to database
@@ -1199,7 +1199,7 @@ function cancel_po() {
 		$(".form-group").removeClass("has-error"); // clear error class
 		$(".help-block").empty(); // clear error string
 
-		const url = "cancel-po";
+		const url = "../cancel-po";
 		const $form = "#form-po-set";
 
 		// ajax adding data to database
@@ -2183,6 +2183,21 @@ function add_po_temp() {
 	$(".modal-title").text(text); // Set Title to Bootstrap modal title
 }
 
+function add_po_detail() {
+	// ---> calling for the Add Modal form
+	save_method = "add-po-detail";
+	text = "Add Purchase Order Item";
+
+    $("#prod_id").prop("disabled", false);
+    $("#arrived_qty").hide();
+
+	$("#form")[0].reset(); // reset form on modals
+	$(".form-group").removeClass("has-error"); // clear error class
+	$(".help-block").empty(); // clear error string
+	$("#modal_form").modal("show"); // show bootstrap modal
+	$(".modal-title").text(text); // Set Title to Bootstrap modal title
+}
+
 function add_product() {
 	// ---> calling for the Add Modal form
 	save_method = "add-product";
@@ -2555,7 +2570,8 @@ function edit_po_detail(id) {
 	save_method = "update-po-detail";
 	$("#form")[0].reset(); // reset form on modals
 	$(".form-group").removeClass("has-error"); // clear error class
-	$(".help-block").empty(); // clear error string
+    $(".help-block").empty(); // clear error string
+    $("#arrived_qty").show();
 
 	//Ajax Load data from ajax
 	$.ajax({
@@ -2962,7 +2978,9 @@ function save() {
 	} else if (save_method == "add-po-temp") {
 		url = "add-po-temp";
 	} else if (save_method == "update-po-temp") {
-		url = "update-po-temp";
+        url = "update-po-temp";
+    } else if (save_method == "add-po-detail") {
+		url = "../add-po-detail";
 	} else if (save_method == "update-po-detail") {
 		url = "../update-po-detail";
 	} else if (save_method == "add-product") {

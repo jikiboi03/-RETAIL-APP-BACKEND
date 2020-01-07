@@ -39,10 +39,10 @@
 
 
             <div class="panel-heading">
-                <div class="form-group col-md-10">
+                <div class="col-md-10">
                     <h3 class="panel-title"><b>PO<?php echo $po->po_id; ?></b></h3>
                 </div>
-                <div class="form-group col-md-2" align="right">
+                <div class="col-md-2" align="right">
                     <br/>
                     <button class="btn btn-default" onclick="go_to_po_list()"><i class="fa fa-reply"></i> &nbsp;Back to PO list</button>
                 </div>
@@ -50,15 +50,27 @@
 
             <div class="form-body">
             <div class="form-group">
-                                    
-                <label class="control-label col-md-3">Supplier: <h4><?php echo $po->supplier_id; ?></h4></label>
-
-                <label class="control-label col-md-3">Date: <h4><?php echo $po->date; ?></h4></label>
-
-                <label class="control-label col-md-3">Created by: <h4><?php echo $this->users->get_username($po->user_id); // get name instead of id ?></h4></label>
-
-                <label class="control-label col-md-3">Status: <h4><?php echo $po->status; // get name instead of id ?></h4></label>                            
-                
+                <div class="col-md-12">
+                    
+                    <?php 
+                        if ($po->status == 'COMPLETED'){
+                    ?>
+                        <label class="control-label label-dark col-md-2 badge">Status: <h4 style="color: white;">[ COMPLETED ]</h4></label>
+                    <?php
+                        } else if ($po->status == 'CANCELLED'){
+                    ?>
+                        <label class="control-label label-danger col-md-2 badge">Status: <h4 style="color: white;">[ CANCELLED ]</h4></label>
+                    <?php
+                        } else {
+                    ?>
+                        <label class="control-label label-success col-md-2 badge">Status: <h4 style="color: white;">[ PENDING ]</h4></label>
+                    <?php
+                        }
+                    ?>
+                    <label class="control-label col-md-2"></label>
+                    <label class="control-label col-md-4">Created by: <h4><?php echo $this->users->get_username($po->user_id); // get name instead of id ?></h4></label>
+                    <label class="control-label col-md-4">Encoded: <h4><?php echo $po->encoded; ?></h4></label>
+                </div>
             </div>   
             </div>
 
@@ -67,12 +79,18 @@
             <hr style="background-color: #ccccff; height: 3px;">
 
             <div class="panel-heading">
-                <div class="form-group col-md-6">
+                <div class="col-md-6">
                     <h3 class="panel-title">PO Details Table</h3>
                 </div>
-                <div class="form-group col-md-6" align="right">
-                    <button class="btn btn-danger" style="font-size: 15px;"  onclick="complete_po()"><i class="fa fa-cog"></i> &nbsp;Cancel PO</button>
-                    <button class="btn btn-primary" style="font-size: 15px;"  onclick="cancel_po()"><i class="fa fa-cog"></i> &nbsp;Complete PO</button>
+                <div class="col-md-6" align="right">
+                    <?php 
+                        if ($po->status == 'PENDING'){
+                    ?>
+                            <button class="btn btn-danger" style="font-size: 15px;"  onclick="cancel_po()"><i class="fa fa-times"></i> &nbsp;Cancel PO</button>
+                            <button class="btn btn-primary" style="font-size: 15px;"  onclick="complete_po()"><i class="fa fa-check"></i> &nbsp;Complete PO</button>
+                    <?php 
+                        }
+                    ?>
                 </div>
             </div>
             <hr>
@@ -82,7 +100,13 @@
             
             <div class="panel-body">
                 <div class="form-group col-md-4">
-                    <button class="btn btn-success" onclick="add_po_detail()"><i class="fa fa-plus-square"></i> &nbsp;Add new PO item</button>
+                    <?php 
+                        if ($po->status == 'PENDING'){
+                    ?>
+                            <button class="btn btn-success" onclick="add_po_detail()"><i class="fa fa-plus-square"></i> &nbsp;Add new PO item</button>
+                    <?php 
+                        }
+                    ?>
                     <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                 </div>
                 <form action="#" id="form-po-set" class="form-horizontal col-md-6">
@@ -128,7 +152,14 @@
                             <th>Qty</th>
                             <th>Unit</th>
                             <th>ArrivedQty</th>
-                            <th style="width:60px;">Action</th>
+                            <?php 
+                                if ($po->status == 'PENDING'){
+                            ?>
+                                    <th style="width:60px;">Action</th>
+                            <?php 
+                                }
+                            ?>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -184,7 +215,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="arrived_qty">
                             <label class="control-label col-md-3">Arrived quantity:</label>
                             <div class="col-md-9">
                                 <input name="arrived_qty" placeholder="Enter arrived quantity" class="form-control" type="number">

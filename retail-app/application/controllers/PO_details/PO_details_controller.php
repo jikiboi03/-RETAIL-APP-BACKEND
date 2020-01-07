@@ -123,6 +123,7 @@ class PO_details_controller extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
+        $po_id = $this->input->post('po_id');
         $prod_id = $this->input->post('prod_id');
 
         if($prod_id == '')
@@ -133,7 +134,7 @@ class PO_details_controller extends CI_Controller {
         }
         else 
         {
-            $duplicates = $this->po_details->get_duplicates($prod_id);
+            $duplicates = $this->po_details->get_duplicates($po_id, $prod_id);
             if($duplicates->num_rows() != 0)
             {
                 $data['inputerror'][] = 'prod_id';

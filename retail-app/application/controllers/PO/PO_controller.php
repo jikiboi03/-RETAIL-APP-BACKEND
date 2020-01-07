@@ -121,7 +121,7 @@ class PO_controller extends CI_Controller {
         echo json_encode(array("status" => TRUE));
     }
 
-    public function ajax_cancelled()
+    public function ajax_cancel()
     {
         // $this->_validate();
 
