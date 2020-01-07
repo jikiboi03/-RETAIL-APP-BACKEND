@@ -98,6 +98,10 @@ $route['showlist-po'] = 'PO/PO_controller/ajax_list';
 
 $route['add-po'] = 'PO/PO_controller/ajax_add';
 
+$route['complete-po'] = '../PO/PO_controller/ajax_complete';
+
+$route['cancel-po'] = '../PO/PO_controller/ajax_cancel';
+
 $route['edit-po/(:num)'] = 'PO/PO_controller/ajax_edit/$1';
 
 $route['update-po'] = 'PO/PO_controller/ajax_update';

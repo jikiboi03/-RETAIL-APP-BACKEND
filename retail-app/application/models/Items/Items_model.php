@@ -143,6 +143,14 @@ class Items_model extends CI_Model {
 
         return $row->descr;
     }
+
+    public function update_stock_in($prod_id, $arrived_qty)
+    {
+        $this->db->set('stock_in', 'stock_in + ' . (int) $arrived_qty, FALSE);
+        $this->db->where('prod_id',$prod_id);
+        $this->db->update($this->table);
+        return $this->db->affected_rows();
+    }
  
     function count_filtered()
     {

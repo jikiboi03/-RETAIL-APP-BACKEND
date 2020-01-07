@@ -51,13 +51,13 @@
             <div class="form-body">
             <div class="form-group">
                                     
-                <label class="control-label col-md-2">Supplier: <h4><?php echo $po->supplier_id; ?></h4></label>
+                <label class="control-label col-md-3">Supplier: <h4><?php echo $po->supplier_id; ?></h4></label>
 
-                <label class="control-label col-md-4">Date: <h4><?php echo $po->date; ?></h4></label>
+                <label class="control-label col-md-3">Date: <h4><?php echo $po->date; ?></h4></label>
 
-                <label class="control-label col-md-2">Created by: <h4><?php echo $po->user_id; // get name instead of id ?></h4></label>
+                <label class="control-label col-md-3">Created by: <h4><?php echo $this->users->get_username($po->user_id); // get name instead of id ?></h4></label>
 
-                <label class="control-label col-md-2">Created by: <h4><?php echo $po->status; // get name instead of id ?></h4></label>                            
+                <label class="control-label col-md-3">Status: <h4><?php echo $po->status; // get name instead of id ?></h4></label>                            
                 
             </div>   
             </div>
@@ -71,8 +71,8 @@
                     <h3 class="panel-title">PO Details Table</h3>
                 </div>
                 <div class="form-group col-md-6" align="right">
-                    <button class="btn btn-danger" style="font-size: 15px;"  onclick="generate_po()"><i class="fa fa-cog"></i> &nbsp;Cancel PO</button>
-                    <button class="btn btn-primary" style="font-size: 15px;"  onclick="generate_po()"><i class="fa fa-cog"></i> &nbsp;Complete PO</button>
+                    <button class="btn btn-danger" style="font-size: 15px;"  onclick="complete_po()"><i class="fa fa-cog"></i> &nbsp;Cancel PO</button>
+                    <button class="btn btn-primary" style="font-size: 15px;"  onclick="cancel_po()"><i class="fa fa-cog"></i> &nbsp;Complete PO</button>
                 </div>
             </div>
             <hr>

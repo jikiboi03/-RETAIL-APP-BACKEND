@@ -10,6 +10,7 @@ class PO_details_controller extends CI_Controller {
         $this->load->model('PO_details/PO_details_model','po_details');
         $this->load->model('Products/Products_model','products');
         $this->load->model('Suppliers/Suppliers_model','suppliers');
+        $this->load->model('Users/Users_model','users');
     }
 
     public function index($po_id)						

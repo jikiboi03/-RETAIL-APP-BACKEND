@@ -5,8 +5,8 @@ class PO_details_model extends CI_Model {
  
     var $table = 'po_details';
 
-    var $column_order = array('num','prod_id','unit','unit_qty'); //set column field database for datatable orderable
-    var $column_search = array('num','prod_id','unit','unit_qty'); //set column field database for datatable searchable
+    var $column_order = array('num','prod_id','prod_name','unit_qty','unit','arrived_qty',null); //set column field database for datatable orderable
+    var $column_search = array('num','prod_id','prod_name','unit_qty','unit','arrived_qty',null); //set column field database for datatable searchable
 
     var $order = array('num' => 'asc'); // default order 
  
@@ -69,18 +69,6 @@ class PO_details_model extends CI_Model {
         return $query->result();
     }
 
-    function get_api_datatables() // api function in getting data list
-    {        
-        $this->db->select('po.*, suppliers.name, users.username');
-        $this->db->from($this->table);
-
-        $this->db->join('suppliers', 'suppliers.supplier_id = po.supplier_id');
-        $this->db->join('users', 'users.user_id = po.user_id');
-        
-        $query = $this->db->get();
-        return $query->result();
-    }
-
     // check for duplicates in the database table for validation
     function get_duplicates($po_id, $prod_id)
     {      
@@ -93,19 +81,13 @@ class PO_details_model extends CI_Model {
         return $query;
     }
 
-    // get both id and names
-    function get_items()
+    function get_po_items($po_id)
     {
-        $this->db->select('po.*, suppliers.name, users.username');
         $this->db->from($this->table);
 
-        $this->db->join('suppliers', 'suppliers.supplier_id = po.supplier_id');
-        $this->db->join('users', 'users.user_id = po.user_id');
-
-        $this->db->order_by("po_id", "desc");
+        $this->db->where('po_id',$po_id); // if data is part of the object by ID
 
         $query = $this->db->get();
-
         return $query->result();
     }
 

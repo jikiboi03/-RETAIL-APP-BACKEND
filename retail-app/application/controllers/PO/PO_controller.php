@@ -9,6 +9,7 @@ class PO_controller extends CI_Controller {
         $this->load->model('PO/PO_model','po');
         $this->load->model('PO_details/PO_details_model','po_details');
         $this->load->model('PO_temp/PO_temp_model','po_temp');
+        $this->load->model('Items/Items_model','items');
     }
 
     public function index()						
@@ -94,6 +95,42 @@ class PO_controller extends CI_Controller {
         }
         $this->po_temp->truncate_table();
 
+        echo json_encode(array("status" => TRUE));
+    }
+
+    public function ajax_complete()
+    {
+        $this->_validate();
+
+        $po_id = $this->input->post('po_id');
+        $data = array(
+            'status' => 'COMPLETED'
+        );
+        $this->po->update(array('po_id' => $po_id), $data);
+        
+        $po_items = $this->po_details->get_po_items($po_id);
+
+        foreach ($po_items as $po_item)
+        {
+            $prod_id = $po_item->prod_id;
+            $arrived_qty = $po_item->arrived_qty;
+
+            $this->items->update_stock_in($prod_id, $arrived_qty);
+        }
+
+        echo json_encode(array("status" => TRUE));
+    }
+
+    public function ajax_cancelled()
+    {
+        // $this->_validate();
+
+        $po_id = $this->input->post('po_id');
+        $data = array(
+            'status' => 'CANCELLED'
+        );
+        $this->po->update(array('po_id' => $po_id), $data);
+        
         echo json_encode(array("status" => TRUE));
     }
  
