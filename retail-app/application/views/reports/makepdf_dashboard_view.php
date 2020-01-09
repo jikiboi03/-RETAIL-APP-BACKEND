@@ -39,7 +39,7 @@ $pdf->SetKeywords('dashboard');
 
 
 // set default header data
-$pdf->SetHeaderData('../../assets/img/' . $logo_img, 35, $title . ' ( ' . $current_date . " )", $comp_name . "\r\n" . 'Prepared by: ' . $user_fullname . "\r\n" . 'Date: ' . $current_date . "\r\n" . 'Time: ' . $current_time . "\r\n");
+$pdf->SetHeaderData(null, 35, $title . ' ( ' . $current_date . " )", $comp_name . "\r\n" . 'Prepared by: ' . $user_fullname . "\r\n" . 'Date: ' . $current_date . "\r\n" . 'Time: ' . $current_time . "\r\n");
 
 
 
