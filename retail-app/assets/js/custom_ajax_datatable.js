@@ -806,18 +806,18 @@ $(document).ready(function() {
 				}
 			}
 		});
-	} else if (tableID == "prod-details-table") {
+	} else if (tableID == "stock-adjustment-table") {
 		// get id
 		var prod_id = $('[name="prod_id"]').val();
 
-		table = $("#prod-details-table").DataTable({
+		table = $("#stock-adjustment-table").DataTable({
 			processing: true, //Feature control the processing indicator.
 			serverSide: true, //Feature control DataTables' server-side processing mode.
 			order: [], //Initial no order.
 
 			// Load data for the table's content from an Ajax source
 			ajax: {
-				url: "../showlist-prod-details/" + prod_id,
+				url: "../showlist-stock-adjustment/" + prod_id,
 				type: "POST"
 			},
 
@@ -2188,8 +2188,8 @@ function add_po_detail() {
 	save_method = "add-po-detail";
 	text = "Add Purchase Order Item";
 
-    $("#prod_id").prop("disabled", false);
-    $("#arrived_qty").hide();
+	$("#prod_id").prop("disabled", false);
+	$("#arrived_qty").hide();
 
 	$("#form")[0].reset(); // reset form on modals
 	$(".form-group").removeClass("has-error"); // clear error class
@@ -2570,8 +2570,8 @@ function edit_po_detail(id) {
 	save_method = "update-po-detail";
 	$("#form")[0].reset(); // reset form on modals
 	$(".form-group").removeClass("has-error"); // clear error class
-    $(".help-block").empty(); // clear error string
-    $("#arrived_qty").show();
+	$(".help-block").empty(); // clear error string
+	$("#arrived_qty").show();
 
 	//Ajax Load data from ajax
 	$.ajax({
@@ -2978,8 +2978,8 @@ function save() {
 	} else if (save_method == "add-po-temp") {
 		url = "add-po-temp";
 	} else if (save_method == "update-po-temp") {
-        url = "update-po-temp";
-    } else if (save_method == "add-po-detail") {
+		url = "update-po-temp";
+	} else if (save_method == "add-po-detail") {
 		url = "../add-po-detail";
 	} else if (save_method == "update-po-detail") {
 		url = "../update-po-detail";

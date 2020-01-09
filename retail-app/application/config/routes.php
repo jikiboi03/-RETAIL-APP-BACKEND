@@ -365,7 +365,7 @@ $route['delete-pack-discount/(:num)'] = 'Pack_discounts/Pack_discounts_controlle
 
 $route['prod-details-page/(:num)'] = 'Prod_details/Prod_details_controller/index/$1';
 
-$route['showlist-prod-details/(:num)'] = 'Prod_details/Prod_details_controller/ajax_list/$1';
+$route['showlist-showlist-stock-adjustment/(:num)'] = 'Prod_details/Prod_details_controller/ajax_list/$1';
 
 $route['add-prod-detail'] = 'Prod_details/Prod_details_controller/ajax_add';
 

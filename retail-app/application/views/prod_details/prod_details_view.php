@@ -96,7 +96,7 @@
                         <hr style="background-color: #ccccff; height: 3px;">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Product Details Table</h3>
+                            <h3 class="panel-title">Stock Adjustment Table</h3>
                         </div>
                         <hr>
                         </div>
@@ -105,19 +105,18 @@
                         
                         <div class="panel-body col-md-12">
 
-                            <button class="btn btn-success" onclick="add_prod_detail()"><i class="fa fa-plus-square"></i> &nbsp;Add New Product Item</button>
+                            <button class="btn btn-success" onclick="add_prod_detail()"><i class="fa fa-plus-square"></i> &nbsp;Adjust stock</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                             <br><br>
-                            <table id="prod-details-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="stock-adjustment-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th style="width:60px;">Item ID</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Qty</th>
-
+                                        <th style="width:60px;">#</th>
+                                        <th>Adjustment Qty</th>
+                                        <th>Qty Before</th>
+                                        <th>Qty After</th>
+                                        <th>Remarks</th>
                                         <th class="min-desktop">Encoded</th>
-                                        <th style="width:60px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -141,7 +140,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Product Item Form</h3>
+                            <h3 class="modal-title">Stock Adjustment Form</h3>
                         </div>
                         <div class="modal-body form">
                             <form action="#" id="form" class="form-horizontal">
