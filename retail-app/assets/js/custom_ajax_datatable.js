@@ -338,40 +338,6 @@ $(document).ready(function() {
 				}
 			],
 			scrollX: true,
-
-			rowCallback: function(row, data, index) {
-				var row_count = data[9],
-					best_selling = data[6],
-					$node = this.api()
-						.row(row)
-						.nodes()
-						.to$();
-
-				if (best_selling.length > 20) {
-					// if there are words such as rank, star symbol, etc. (more than 14 chars automatically)
-					function isOdd(num) {
-						return num % 2;
-					}
-
-					if (isOdd(index) == 1) {
-						// to have different color when changed color is in sequence
-						$node.css("background-color", "#ccff99");
-					} else {
-						$node.css("background-color", "#ccffcc");
-					}
-				} else if (row_count == 0) {
-					function isOdd(num) {
-						return num % 2;
-					}
-
-					if (isOdd(index) == 1) {
-						// to have different color when changed color is in sequence
-						$node.css("background-color", "#ccccff");
-					} else {
-						$node.css("background-color", "#e6e6ff");
-					}
-				}
-			}
 		});
 	} else if (tableID == "packages-table") {
 		table = $("#packages-table").DataTable({
@@ -808,7 +774,7 @@ $(document).ready(function() {
 		});
 	} else if (tableID == "stock-adjustment-table") {
 		// get id
-		var prod_id = $('[name="prod_id"]').val();
+		var prod_id = $('#prod_id').val();
 
 		table = $("#stock-adjustment-table").DataTable({
 			processing: true, //Feature control the processing indicator.
@@ -828,6 +794,37 @@ $(document).ready(function() {
 					orderable: false //set not orderable
 				}
 			],
+			rowCallback: function(row, data, index) {
+				const qty = data[1],
+					$node = this.api()
+						.row(row)
+						.nodes()
+						.to$();
+
+				if (qty > 0) {
+					function isOdd(num) {
+						return num % 2;
+					}
+
+					if (isOdd(index) == 1) {
+						// to have different color when changed color is in sequence
+						$node.css("background-color", "#ccffcc");
+					} else {
+						$node.css("background-color", "#e6ffcc");
+					}
+				} else {
+					function isOdd(num) {
+						return num % 2;
+					}
+
+					if (isOdd(index) == 1) {
+						// to have different color when changed color is in sequence
+						$node.css("background-color", "#ffd8b4");
+					} else {
+						$node.css("background-color", "#ffe5cd");
+					}
+				}
+			},
 			scrollX: true
 		});
 	} else if (tableID == "pack-details-table") {
@@ -2288,12 +2285,10 @@ function add_pack_discount() {
 	$(".modal-title").text(text); // Set Title to Bootstrap modal title
 }
 
-function add_prod_detail() {
+function add_stock_adjustment() {
 	// ---> calling for the Add Modal form
-	save_method = "add-prod-detail";
-	text = "Add Product Item";
-
-	$('[name="item_id"]').prop("disabled", false);
+	save_method = "add-stock-adjustment";
+	text = "Adjust Stock";
 
 	$("#form")[0].reset(); // reset form on modals
 	$(".form-group").removeClass("has-error"); // clear error class
@@ -3013,8 +3008,8 @@ function save() {
 		url = "update-pack-discount";
 	} else if (save_method == "update-store-config") {
 		url = "update-store-config";
-	} else if (save_method == "add-prod-detail") {
-		url = "../add-prod-detail";
+	} else if (save_method == "add-stock-adjustment") {
+		url = "../add-stock-adjustment";
 	} else if (save_method == "update-prod-detail") {
 		url = "../update-prod-detail";
 	} else if (save_method == "add-pack-detail") {
@@ -3249,12 +3244,13 @@ function save() {
 					set_system_log(log_type, details);
 
 					window.location.href = "store-config-page";
-				} else if (save_method == "add-prod-detail") {
+				} else if (save_method == "add-stock-adjustment") {
 					log_type = "Add";
 
-					details = "New product item added: " + $('[name="item_id"]').val();
-
+					details = "Stock adjustment added to P" + $('#prod_id').val();
+					
 					set_system_log_one(log_type, details);
+					reload_page();
 				} else if (save_method == "update-prod-detail") {
 					log_type = "Update";
 

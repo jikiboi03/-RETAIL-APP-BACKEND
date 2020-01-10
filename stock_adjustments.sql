@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 09, 2020 at 06:13 PM
--- Server version: 5.7.28-0ubuntu0.18.04.4
--- PHP Version: 7.4.1
+-- Host: 127.0.0.1
+-- Generation Time: Jan 10, 2020 at 04:43 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,12 +30,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `stock_adjustments` (
   `num` int(11) NOT NULL,
+  `prod_id` int(11) DEFAULT NULL,
   `qty` int(11) DEFAULT NULL,
   `qty_before` int(11) DEFAULT NULL,
   `qty_after` int(11) DEFAULT NULL,
   `remarks` varchar(200) DEFAULT NULL,
-  `encoded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `encoded` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_adjustments`
+--
+
+INSERT INTO `stock_adjustments` (`num`, `prod_id`, `qty`, `qty_before`, `qty_after`, `remarks`, `encoded`) VALUES
+(6, 63, 2, 9, 11, 'test1', '2020-01-10 23:16:49'),
+(7, 63, 5, 11, 16, 'test2', '2020-01-10 23:17:27'),
+(8, 63, -3, 16, 13, 'test3', '2020-01-10 23:18:23'),
+(9, 63, -4, 13, 9, 'test4', '2020-01-10 23:19:24'),
+(10, 85, 3, 0, 3, 'test1', '2020-01-10 23:20:50'),
+(11, 84, 5, 0, 5, 'test1', '2020-01-10 23:21:18'),
+(12, 84, -6, 5, -1, 'test2', '2020-01-10 23:24:25');
 
 --
 -- Indexes for dumped tables
@@ -53,7 +69,9 @@ ALTER TABLE `stock_adjustments`
 -- AUTO_INCREMENT for table `stock_adjustments`
 --
 ALTER TABLE `stock_adjustments`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

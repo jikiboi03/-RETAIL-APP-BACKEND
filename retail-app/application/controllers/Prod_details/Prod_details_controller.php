@@ -23,10 +23,8 @@ class Prod_details_controller extends CI_Controller {
         $this->load->helper('url');
 
         $product_data = $this->products->get_by_id($prod_id);
-        $items_list = $this->items->get_items();
         
         $data['product'] = $product_data;
-        $data['items'] = $items_list;
 
         $data['title'] = 'Product Details';
         $this->load->view('template/dashboard_header',$data);
@@ -44,22 +42,14 @@ class Prod_details_controller extends CI_Controller {
         foreach ($list as $prod_details) {
             $no++;
             $row = array();
-            $row[] = 'I' . $prod_details->item_id;
-
-            $item_name = $this->items->get_item_name($prod_details->item_id);
-            $row[] = $item_name;
-
-            $row[] = $this->items->get_item_descr($prod_details->item_id);
-
+            $row[] = $no;
             $row[] = $prod_details->qty;
 
-            $row[] = $prod_details->encoded;
+            $row[] = $prod_details->qty_before;
+            $row[] = $prod_details->qty_after;
 
-            //add html for action
-            $row[] = '<a class="btn btn-sm btn-info" href="javascript:void(0)" title="Edit" onclick="edit_prod_detail_qty('."'".$prod_id."'".', '."'".$prod_details->item_id."'".')"><i class="fa fa-pencil-square-o"></i></a>
-                      
-                      <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_prod_detail('."'".$prod_id."'".', '."'".$prod_details->item_id."'".')"><i class="fa fa-trash"></i></a>';
- 
+            $row[] = $prod_details->remarks;
+            $row[] = $prod_details->encoded;
             $data[] = $row;
         }
  
@@ -82,12 +72,24 @@ class Prod_details_controller extends CI_Controller {
     public function ajax_add()
     {
         $this->_validate();
+        $prod_id = $this->input->post('prod_id');
+        $qty = $this->input->post('qty');
+        $stock_in = $this->items->get_stock_in($prod_id);
+        $stock_out = $this->items->get_stock_out($prod_id);
+        $qty_before = ($stock_in - $stock_out);
         $data = array(
-                'prod_id' => $this->input->post('prod_id'),
-                'item_id' => $this->input->post('item_id'),
-                'qty' => $this->input->post('qty'),
+                'prod_id' => $prod_id,
+                'qty' => $qty,
+                'qty_before' => $qty_before,
+                'qty_after' => ($qty_before + $qty),
+                'remarks' => $this->input->post('remarks')
             );
         $insert = $this->prod_details->save($data);
+
+        if ($qty > 0)
+            $this->items->update_stock_in($prod_id, $qty);
+        else
+            $this->items->update_stock_out($prod_id, ($qty * -1));
         echo json_encode(array("status" => TRUE));
     }
  
@@ -176,73 +178,25 @@ class Prod_details_controller extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('item_id') == '')
-        {
-            $data['inputerror'][] = 'item_id';
-            $data['error_string'][] = 'Product item is required';
-            $data['status'] = FALSE;
-        }
-        // validation for duplicates
-        else
-        {
-            $prod_id = $this->input->post('prod_id');
-            $new_item_id = $this->input->post('item_id');
-            // check if name has a new value or not
-            if ($this->input->post('current_item_id') != $new_item_id)
-            {
-                // validate if name already exist in the databaase table
-                $duplicates = $this->prod_details->get_duplicates($prod_id, $new_item_id);
-
-                if ($duplicates->num_rows() != 0)
-                {
-                    $data['inputerror'][] = 'item_id';
-                    $data['error_string'][] = 'Product item already registered';
-                    $data['status'] = FALSE;
-                }
-            }
-        }
-
         if($this->input->post('qty') == '')
         {
             $data['inputerror'][] = 'qty';
-            $data['error_string'][] = 'Product item quantity is required';
+            $data['error_string'][] = 'Stock adjustment quantity is required';
             $data['status'] = FALSE;
         }
-        else if($this->input->post('qty') <= 0)
+        else if($this->input->post('qty') == 0)
         {
             $data['inputerror'][] = 'qty';
-            $data['error_string'][] = 'Quantity value should be greater than zero';
+            $data['error_string'][] = 'Quantity value should not be zero';
             $data['status'] = FALSE;
         }
 
-
-        if($data['status'] === FALSE)
+        if($this->input->post('remarks') == '')
         {
-            echo json_encode($data);
-            exit();
-        }
-    }
-
-    private function _validate_qty_only()
-    {
-        $data = array();
-        $data['error_string'] = array();
-        $data['inputerror'] = array();
-        $data['status'] = TRUE;
-
-        if($this->input->post('qty') == '')
-        {
-            $data['inputerror'][] = 'qty';
-            $data['error_string'][] = 'Product item quantity is required';
+            $data['inputerror'][] = 'remarks';
+            $data['error_string'][] = 'Adjustment remark is required';
             $data['status'] = FALSE;
         }
-        else if($this->input->post('qty') <= 0)
-        {
-            $data['inputerror'][] = 'qty';
-            $data['error_string'][] = 'Quantity value should be greater than zero';
-            $data['status'] = FALSE;
-        }
-
 
         if($data['status'] === FALSE)
         {

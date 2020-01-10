@@ -61,7 +61,7 @@
 
                             <?php echo form_open_multipart('Prod_details/Prod_details_controller/do_upload');?> 
                               <form action = "" method = "">
-                                <input type="hidden" value=<?php echo "'" . $product->prod_id . "'"; ?> name="prod_id"/> 
+                                <input type="hidden" value=<?php echo "'" . $product->prod_id . "'"; ?> name="prod_id" id="prod_id"/> 
                                  <br />  
                                  <input type = "file" name = "userfile1" id="userfile1" size = "20" style = "padding-left: 20px;"/> 
                                  <br />
@@ -85,6 +85,10 @@
 
                             <label class="control-label col-md-2">Product Price: <h4>₱ <?php echo number_format($product->price, 2, '.', ','); ?></h4></label>
                             <label class="control-label col-md-2">Sold: <h4><?php echo $product->sold; ?></h4></label>
+                            <label class="control-label col-md-2">Stock In: <h4><?php echo $product->stock_in; ?></h4></label>
+                            <label class="control-label col-md-2">Stock Out: <h4><?php echo $product->stock_out; ?></h4></label>
+                            <label class="control-label col-md-8"><h4><?php echo "<hr>" ?></h4></label>
+                            <label class="control-label col-md-2">Stock (pcs): <h4><?php echo ($product->stock_in - $product->stock_out); ?></h4></label>
                             
                             
                             
@@ -105,7 +109,7 @@
                         
                         <div class="panel-body col-md-12">
 
-                            <button class="btn btn-success" onclick="add_prod_detail()"><i class="fa fa-plus-square"></i> &nbsp;Adjust stock</button>
+                            <button class="btn btn-success" onclick="add_stock_adjustment()"><i class="fa fa-plus-square"></i> &nbsp;Adjust stock</button>
                             <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                             <br><br>
                             <table id="stock-adjustment-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -145,35 +149,23 @@
                         <div class="modal-body form">
                             <form action="#" id="form" class="form-horizontal">
 
-                                <input type="hidden" value=<?php echo "'" . $product->prod_id . "'"; ?> name="prod_id"/>
-                                <input type="hidden" value="" name="current_item_id"/>
+                                <input type="hidden" value=<?php echo "'" . $product->prod_id . "'"; ?> name="prod_id" id="prod_id"/>
                                 
                                 <div class="form-body">
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Item :</label>
+                                        <label class="control-label col-md-3">Quantity:</label>
                                         <div class="col-md-9">
-                                            <select name="item_id" class="form-control">
-                                                <option value="">--Select Item--</option>
-                                                <?php 
-                                                    foreach($items as $row)
-                                                    { 
-                                                      echo '<option value="'.$row->item_id.'">'.$row->name.'</option>';
-                                                    }
-                                                ?>
-                                            </select>
+                                            <input name="qty" placeholder="Adjustment quantity" class="form-control" value="0" type="number">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Quantity :</label>
+                                        <label class="control-label col-md-3">Remarks:</label>
                                         <div class="col-md-9">
-                                            <input name="qty" placeholder="Product Item Quantity" class="form-control" value="1" type="number">
+                                            <textarea name="remarks" placeholder="Adjustment remarks" class="form-control"></textarea>
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
                         </div>

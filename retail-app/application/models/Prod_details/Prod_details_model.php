@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Prod_details_model extends CI_Model {
  
-    var $table = 'prod_details';
+    var $table = 'stock_adjustments';
 
-    var $column_order = array('item_id','qty','encoded',null); //set column field database for datatable orderable
-    var $column_search = array('item_id','qty','encoded'); //set column field database for datatable searchable
+    var $column_order = array('num','qty','qty_before','qty_after','remarks','encoded'); //set column field database for datatable orderable
+    var $column_search = array('num','qty','qty_before','qty_after','remarks','encoded'); //set column field database for datatable searchable
 
-    var $order = array('encoded' => 'desc'); // date descending order 
+    var $order = array('num' => 'asc'); // date descending order 
  
     public function __construct()
     {

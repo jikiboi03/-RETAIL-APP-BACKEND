@@ -144,9 +144,43 @@ class Items_model extends CI_Model {
         return $row->descr;
     }
 
+    function get_stock_in($prod_id)
+    {
+        $this->db->select('stock_in');
+        $this->db->from($this->table);
+        $this->db->where('prod_id',$prod_id);
+        
+        $query = $this->db->get();
+
+        $row = $query->row();
+
+        return $row->stock_in;
+    }
+
+    function get_stock_out($prod_id)
+    {
+        $this->db->select('stock_out');
+        $this->db->from($this->table);
+        $this->db->where('prod_id',$prod_id);
+        
+        $query = $this->db->get();
+
+        $row = $query->row();
+
+        return $row->stock_out;
+    }
+
     public function update_stock_in($prod_id, $arrived_qty)
     {
         $this->db->set('stock_in', 'stock_in + ' . (int) $arrived_qty, FALSE);
+        $this->db->where('prod_id',$prod_id);
+        $this->db->update($this->table);
+        return $this->db->affected_rows();
+    }
+
+    public function update_stock_out($prod_id, $removed_qty)
+    {
+        $this->db->set('stock_out', 'stock_out + ' . (int) $removed_qty, FALSE);
         $this->db->where('prod_id',$prod_id);
         $this->db->update($this->table);
         return $this->db->affected_rows();
