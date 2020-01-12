@@ -132,9 +132,12 @@ class Products_controller extends CI_Controller {
                 'descr' => $this->input->post('descr'),
                 'cat_id' => $this->input->post('cat_id'),
                 'price' => $this->input->post('price'),
+                'reorder_pt' => $this->input->post('reorder_pt'),
                 'img' => '',
                 'sold' => 0,
-                'removed' => 0
+                'removed' => 0,
+                'stock_in' => 0,
+                'stock_out' => 0
             );
         $insert = $this->products->save($data);
         echo json_encode(array("status" => TRUE));
@@ -149,6 +152,7 @@ class Products_controller extends CI_Controller {
                 'descr' => $this->input->post('descr'),
                 'cat_id' => $this->input->post('cat_id'),
                 'price' => $this->input->post('price'),
+                'reorder_pt' => $this->input->post('reorder_pt'),
             );
         $this->products->update(array('prod_id' => $this->input->post('prod_id')), $data);
         echo json_encode(array("status" => TRUE));
@@ -238,6 +242,19 @@ class Products_controller extends CI_Controller {
         {
             $data['inputerror'][] = 'price';
             $data['error_string'][] = 'Product price should be greater than zero';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('reorder_pt') == '')
+        {
+            $data['inputerror'][] = 'reorder_pt';
+            $data['error_string'][] = 'Product reorder point is required';
+            $data['status'] = FALSE;
+        }
+        else if($this->input->post('reorder_pt') <= 0)
+        {
+            $data['inputerror'][] = 'reorder_pt';
+            $data['error_string'][] = 'Product reorder point should be greater than zero';
             $data['status'] = FALSE;
         }
 

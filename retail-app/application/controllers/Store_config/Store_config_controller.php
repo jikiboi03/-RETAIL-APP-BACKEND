@@ -323,7 +323,7 @@ class Store_config_controller extends CI_Controller {
   */
  define("DB_USER", 'jiktorres');
  define("DB_PASSWORD", 'jiktorres');
- define("DB_NAME", 'resto_app');
+ define("DB_NAME", 'retail_app_production');
  define("DB_HOST", 'localhost');
  define("BACKUP_DIR", 'myphp-backup-files'); // Comment this line to use same script's directory ('.')
  define("TABLES", '*'); // Full backup

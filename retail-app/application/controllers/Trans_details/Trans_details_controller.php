@@ -13,6 +13,7 @@ class Trans_details_controller extends CI_Controller {
         $this->load->model('Transactions/Transactions_model','transactions');
 
         $this->load->model('Products/Products_model','products');
+        $this->load->model('Items/Items_model','items');
         $this->load->model('Packages/Packages_model','packages');
         $this->load->model('Pack_details/Pack_details_model','pack_details');
         $this->load->model('Tables/Tables_model','tables');
@@ -1218,6 +1219,7 @@ class Trans_details_controller extends CI_Controller {
             if ($items->prod_type == 0) // if prod_type is individual product
             {
                 $this->products->update_sold_prod($items->prod_id, $qty);
+                $this->items->update_stock_out($items->prod_id, $qty);
             }
             else if ($items->prod_type == 1) // if prod_type is package
             {
@@ -1228,6 +1230,19 @@ class Trans_details_controller extends CI_Controller {
                 $this->products->update_sold_pack_prod($items->prod_id, $qty);
             }
         }
+
+        $this->set_transaction_receipt($trans_id, "payment", $receipt_no); // print receipt upon clearing out the transaction
+
+        // $this->table_groups->delete_by_trans_id($trans_id);
+
+
+        // add transaction to trans_logs record --------------------------------------------------------
+
+        $log_type = 'Payment';
+
+        $details = 'Transaction payment S' . $trans_id . ' RCPT#: ' . $receipt_no;
+
+        $this->add_trans_log($log_type, $details, $this->session->userdata('username'));
 
         echo json_encode(array("status" => TRUE));
     }
@@ -1433,19 +1448,19 @@ class Trans_details_controller extends CI_Controller {
         $printer -> text($mobile . "\n");
         $printer -> text($tin . "\n");
 
-        $printer -> text(str_pad("", 30, '*', STR_PAD_BOTH) . "\n");
-        $printer -> text($table_str . "\n");
-        $printer -> text(str_pad("", 30, '*', STR_PAD_BOTH) . "\n");
+        $printer -> text(str_pad("", 33, '*', STR_PAD_BOTH) . "\n");
+        // $printer -> text($table_str . "\n");
+        // $printer -> text(str_pad("", 30, '*', STR_PAD_BOTH) . "\n");
 
         /* Title of receipt */
-        $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-        $printer -> text($order_type . "\n");
-        $printer -> selectPrintMode();
+        // $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        // $printer -> text($order_type . "\n");
+        // $printer -> selectPrintMode();
 
         $printer -> setJustification(Printer::JUSTIFY_LEFT);
         $printer -> text(new item('Transaction#: ' . $trans_id, ''));
         $printer -> text(new item('Receipt#: ' . $receipt_no, ''));
-        $printer -> text(new item('Staff: ' . $staff_username, ''));
+        // $printer -> text(new item('Staff: ' . $staff_username, ''));
         $printer -> text(new item('Cashier: ' . $cashier_username, ''));
 
         $printer -> text(str_pad("", 33, '=', STR_PAD_BOTH) . "\n");

@@ -499,8 +499,8 @@ class Dashboard_controller extends CI_Controller {
         $printer -> text(str_pad("COUNT", 33, '=', STR_PAD_BOTH) . "\n");
 
         $printer -> text(new item('TotalTrans: ', $trans_count_total));
-        $printer -> text(new item('DineIn: ', $trans_count_dine_in));
-        $printer -> text(new item('TakeOut: ', $trans_count_take_out));
+        // $printer -> text(new item('DineIn: ', $trans_count_dine_in));
+        // $printer -> text(new item('TakeOut: ', $trans_count_take_out));
         $printer -> text(str_pad("", 33, '-', STR_PAD_BOTH) . "\n");
         $printer -> text(new item('Cleared: ', $trans_count_cleared));
         $printer -> text(new item('Cancelled: ', $trans_count_cancelled));
@@ -517,8 +517,8 @@ class Dashboard_controller extends CI_Controller {
 
         $printer -> text(new item('GrossSales: ', $gross_sales_str));
         $printer -> text(str_pad("", 33, '-', STR_PAD_BOTH) . "\n");
-        $printer -> text(new item('DiscountSC: ', $disc_sc_str));
-        $printer -> text(new item('DiscountPWD: ', $disc_pwd_str));
+        // $printer -> text(new item('DiscountSC: ', $disc_sc_str));
+        // $printer -> text(new item('DiscountPWD: ', $disc_pwd_str));
         $printer -> text(new item('DiscountPromo: ', $disc_promo_str));
         $printer -> text(new item('DiscountTotal: ', $disc_total_str));
         $printer -> text(str_pad("", 33, '-', STR_PAD_BOTH) . "\n");

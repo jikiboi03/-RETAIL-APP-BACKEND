@@ -45,6 +45,12 @@ class PO_details_controller extends CI_Controller {
         $no = $_POST['start'];
         foreach ($list as $po_details) {
             $no++;
+            $arrived_qty = $po_details->arrived_qty;
+            if ($arrived_qty != 0){
+                $arrived_qty = $arrived_qty;
+            } else {
+                $arrived_qty = "";
+            }
             $row = array();
             $row[] = $no;
             $row[] = 'P' . $po_details->prod_id;
@@ -52,7 +58,7 @@ class PO_details_controller extends CI_Controller {
 
             $row[] = $po_details->unit_qty;
             $row[] = $po_details->unit;
-            $row[] = $po_details->arrived_qty;
+            $row[] = $arrived_qty;
 
             //add html for action
             $row[] = '<a class="btn btn-info" href="javascript:void(0)" title="Edit" onclick="edit_po_detail('."'".$po_details->num."'".')"><i class="fa fa-pencil-square-o"></i></a>

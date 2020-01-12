@@ -38,52 +38,58 @@
                 <h3 class="panel-title">Purchase Orders Details Table</h3>
             </div>
             <div class="panel-body">
-                <div class="form-group col-md-4">
-                    <button class="btn btn-success" onclick="add_po_temp()"><i class="fa fa-plus-square"></i> &nbsp;Add new PO item</button>
-                    <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
-                    <button class="btn btn-danger" onclick="truncate_po_table()"><i class="fa fa-times"></i> &nbsp;Clear all</button>
-                </div>
-                <form action="#" id="form-po-set" class="form-horizontal col-md-6">
-                    <div class="form-body">
-                        <div class="form-group col-md-8">
-                            <div>
-                                <select name="supplier_id" id="supplier_id" class="form-control" style="font-size: 15px;">
-                                    <option value="">--Select Supplier--</option>
-                                    <?php 
-                                        foreach($suppliers as $row)
-                                        { 
-                                            if ($supplier->supplier_id == $row->supplier_id)
-                                            {
-                                                echo '<option value="'.$row->supplier_id.'" selected>SU'.$row->supplier_id.': '.$row->name.'</option>';
+                <form action="#" id="form-po-set">
+                    <div class="form-group col-md-4">
+                        <button class="btn btn-success" onclick="add_po_temp()"><i class="fa fa-plus-square"></i> &nbsp;Add new PO item</button>
+                        <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
+                        <button class="btn btn-danger" onclick="truncate_po_table()"><i class="fa fa-times"></i> &nbsp;Clear all</button>
+                    </div>
+                    <div class="form-horizontal col-md-6">
+                        <div class="form-body">
+                            <div class="form-group col-md-8">
+                                <div>
+                                    <select name="supplier_id" id="supplier_id" class="form-control" style="font-size: 15px;">
+                                        <option value="">--Select Supplier--</option>
+                                        <?php 
+                                            foreach($suppliers as $row)
+                                            { 
+                                                if ($supplier->supplier_id == $row->supplier_id)
+                                                {
+                                                    echo '<option value="'.$row->supplier_id.'" selected>SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<option value="'.$row->supplier_id.'">SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                }
+                                                
                                             }
-                                            else
-                                            {
-                                                echo '<option value="'.$row->supplier_id.'">SU'.$row->supplier_id.': '.$row->name.'</option>';
-                                            }
-                                            
-                                        }
-                                    ?>
-                                </select>
-                                <span class="help-block"></span>
+                                        ?>
+                                    </select>
+                                    <span class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div>
-                                <input name="date" id="po_date" class="form-control" type="date" value=<?php echo $supplier->date ?>>
-                                <span class="help-block"></span>
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <input name="date" id="po_date" class="form-control" type="date" value=<?php echo $supplier->date ?>>
+                                    <span class="help-block"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="form-body">
+                        <div class="form-group col-md-2" align="right">
+                            <button class="btn btn-default" onclick="go_to_stocks()"><i class="fa fa-reply"></i> &nbsp;Back to stocks</button>
+                            <input name="generate" id="generate" class="form-control" type="hidden">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
                 </form>
-                <div class="form-group col-md-2" align="right">
-                    <button class="btn btn-default" onclick="go_to_stocks()"><i class="fa fa-reply"></i> &nbsp;Back to stocks</button>
-                </div>
-                <br><br>
+                <br /><br />
                 <table id="po-temp-table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 14px;">
                     <thead>
                         <tr>
                             <th style="width:60px;">#</th>
-                            <th>Prod ID</th>
+                            <th>Product ID</th>
                             <th>Name</th>
                             <th>Qty</th>
                             <th>Unit</th>
@@ -94,8 +100,8 @@
                     <tbody>
                     </tbody>
                 </table>
-                <div class="form-group col-md-12" align="right">
                 <hr />
+                <div class="form-group col-md-12" align="right">
                     <button class="btn btn-primary" style="font-size: 15px;"  onclick="generate_po()"><i class="fa fa-cog"></i> &nbsp;Generate PO</button>
                 </div>
             </div>

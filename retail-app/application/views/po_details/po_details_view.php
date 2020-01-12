@@ -109,49 +109,97 @@
                     ?>
                     <button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i> &nbsp;Reload</button>
                 </div>
-                <form action="#" id="form-po-set" class="form-horizontal col-md-6">
-                    <input type="hidden" value=<?php echo $po->po_id ?> name="po_id" id="po_id"/>
-                    <div class="form-body">
-                        <div class="form-group col-md-8">
-                            <div>
-                                <select name="supplier_id" id="supplier_id_final" class="form-control" style="font-size: 15px;">
-                                    <option value="">--Select Supplier--</option>
-                                    <?php 
-                                        foreach($suppliers as $row)
-                                        { 
-                                            if ($po->supplier_id == $row->supplier_id)
-                                            {
-                                                echo '<option value="'.$row->supplier_id.'" selected>SU'.$row->supplier_id.': '.$row->name.'</option>';
-                                            }
-                                            else
-                                            {
-                                                echo '<option value="'.$row->supplier_id.'">SU'.$row->supplier_id.': '.$row->name.'</option>';
-                                            }
-                                            
-                                        }
-                                    ?>
-                                </select>
-                                <span class="help-block"></span>
+                <form action="#" id="form-po-set">
+                    <div class="form-horizontal col-md-8">
+                        <input type="hidden" value=<?php echo $po->po_id ?> name="po_id" id="po_id"/>
+                        <div class="form-body">
+
+                            <?php 
+                                if ($po->status == 'PENDING'){
+                            ?>
+                                    <div class="form-group col-md-6">
+                                        <div>
+                                            <select name="supplier_id" id="supplier_id_final" class="form-control" style="font-size: 15px;">
+                                                <option value="">--Select Supplier--</option>
+                                                <?php 
+                                                    foreach($suppliers as $row)
+                                                    { 
+                                                        if ($po->supplier_id == $row->supplier_id)
+                                                        {
+                                                            echo '<option value="'.$row->supplier_id.'" selected>SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<option value="'.$row->supplier_id.'">SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                        }
+                                                        
+                                                    }
+                                                ?>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div>
+                                            <input name="date" id="po_date_final" class="form-control" type="date" value=<?php echo $po->date ?>>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                            <?php
+                                } else {
+                            ?>
+                                    <div class="form-group col-md-6">
+                                        <div>
+                                            <select name="supplier_id" id="supplier_id_final" class="form-control" style="font-size: 15px;" disabled>
+                                                <option value="">--Select Supplier--</option>
+                                                <?php 
+                                                    foreach($suppliers as $row)
+                                                    { 
+                                                        if ($po->supplier_id == $row->supplier_id)
+                                                        {
+                                                            echo '<option value="'.$row->supplier_id.'" selected>SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<option value="'.$row->supplier_id.'">SU'.$row->supplier_id.': '.$row->name.'</option>';
+                                                        }
+                                                        
+                                                    }
+                                                ?>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div>
+                                            <input name="date" id="po_date_final" class="form-control" type="date" value=<?php echo $po->date ?> disabled>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                            ?>
+                            <div class="form-group col-md-3">
+                                <div>
+                                    <input name="generate" id="generate" class="form-control" type="hidden">
+                                    <span class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div>
-                                <input name="date" id="po_date_final" class="form-control" type="date" value=<?php echo $po->date ?>>
-                                <span class="help-block"></span>
-                            </div>
+                            
                         </div>
                     </div>
+                    
                 </form>
                 <br><br>
                 <table id="po-details-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th style="width:60px;">#</th>
-                            <th>Prod ID</th>
+                            <th>Product ID</th>
                             <th>Name</th>
                             <th>Qty</th>
                             <th>Unit</th>
-                            <th>ArrivedQty</th>
+                            <th>Arrived Qty</th>
                             <?php 
                                 if ($po->status == 'PENDING'){
                             ?>
@@ -165,7 +213,12 @@
                     <tbody>
                     </tbody>
                 </table>
+                <br />
+                <div class="col-md-12" align="right">
+                    <button class="btn btn-success" onclick="set_po_reprint_pdf(<?php echo $po->po_id; ?>)"><i class="fa fa-print"></i> &nbsp;Reprint purchase order</button>
+                </div>
             </div>
+            
         </div>
         <!--===================================================-->
         <!-- End Striped Table -->

@@ -68,6 +68,7 @@ class PO_controller extends CI_Controller {
         echo json_encode($data);
     }
  
+    // create/generate PO function
     public function ajax_add()
     {
         $this->_validate();
@@ -95,12 +96,12 @@ class PO_controller extends CI_Controller {
         }
         $this->po_temp->truncate_table();
 
-        echo json_encode(array("status" => TRUE));
+        echo json_encode(array("status" => TRUE, "po_id" => $insert));
     }
 
     public function ajax_complete()
     {
-        $this->_validate();
+        $this->_validate_set();
 
         $po_id = $this->input->post('po_id');
         $data = array(
@@ -136,7 +137,6 @@ class PO_controller extends CI_Controller {
  
     public function ajax_update()
     {
-        $this->_validate();
         $data = array(
             'supplier_id' => $this->input->post('supplier_id'),
             'date' => $this->input->post('date')
@@ -173,6 +173,66 @@ class PO_controller extends CI_Controller {
         {
             $data['inputerror'][] = 'date';
             $data['error_string'][] = 'Date is required';
+            $data['status'] = FALSE;
+        }
+
+        $no_entry = $this->po_temp->get_no_entry();
+        if($no_entry->num_rows() == 0)
+        {
+            $data['inputerror'][] = 'generate';
+            $data['error_string'][] = 'PO should contain entries';
+            $data['status'] = FALSE;
+        }
+
+        $no_quantity = $this->po_temp->get_no_quantity();
+        if($no_quantity->num_rows() != 0)
+        {
+            $data['inputerror'][] = 'generate';
+            $data['error_string'][] = 'Quantities should contain values';
+            $data['status'] = FALSE;
+        }
+
+        if($data['status'] === FALSE)
+        {
+            echo json_encode($data);
+            exit();
+        }
+    }
+
+    private function _validate_set()
+    {
+        $data = array();
+        $data['error_string'] = array();
+        $data['inputerror'] = array();
+        $data['status'] = TRUE;
+
+        $po_id = $this->input->post('po_id');
+        if($this->input->post('supplier_id') == '')
+        {
+            $data['inputerror'][] = 'supplier_id';
+            $data['error_string'][] = 'Purchase order supplier is required';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('date') == '')
+        {
+            $data['inputerror'][] = 'date';
+            $data['error_string'][] = 'Date is required';
+            $data['status'] = FALSE;
+        }
+
+        $no_entry = $this->po_details->get_no_entry($po_id);
+        $no_quantity = $this->po_details->get_no_quantity($po_id);
+        if($no_entry->num_rows() == 0)
+        {
+            $data['inputerror'][] = 'generate';
+            $data['error_string'][] = 'PO should contain entries';
+            $data['status'] = FALSE;
+        }
+        else if ($no_quantity->num_rows() == 0)
+        {
+            $data['inputerror'][] = 'generate';
+            $data['error_string'][] = 'Arrived quantity should contain values';
             $data['status'] = FALSE;
         }
 

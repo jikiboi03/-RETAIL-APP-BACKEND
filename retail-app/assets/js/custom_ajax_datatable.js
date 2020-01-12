@@ -56,6 +56,41 @@ $(document).ready(function() {
 			select: {
 				style: "multi"
 			},
+			rowCallback: function(row, data, index) {
+				var stock = data[4],
+					reorder_pt = data[7],
+					$node = this.api()
+						.row(row)
+						.nodes()
+						.to$();
+
+				if (stock <= reorder_pt) {
+					// if there are words such as rank, star symbol, etc. (more than 14 chars automatically)
+					function isOdd(num) {
+						return num % 2;
+					}
+
+					if (isOdd(index) == 1) {
+						// to have different color when changed color is in sequence
+						$node.css("background-color", "#ffd8b4");
+					} else {
+						$node.css("background-color", "#ffe5cd");
+					}
+				} 
+				if (stock > reorder_pt && stock <= (parseInt(reorder_pt) + 5)) {
+					// if there are words such as rank, star symbol, etc. (more than 14 chars automatically)
+					function isOdd(num) {
+						return num % 2;
+					}
+
+					if (isOdd(index) == 1) {
+						// to have different color when changed color is in sequence
+						$node.css("background-color", "#FFFF99");
+					} else {
+						$node.css("background-color", "#FFFF66");
+					}
+				}
+			},
 			scrollX: true
 		});
 		table
@@ -1125,6 +1160,7 @@ function generate_po() {
 		success: function(data) {
 			if (data.status) {
 				//if success close modal and reload ajax table
+				set_po_pdf(data.po_id);
 				go_to_stocks();
 			} else {
 				{
@@ -1925,12 +1961,12 @@ function print_s_reading() {
 				success: function(data) {
 					var log_type = "Report";
 
-					var details = "S-Reading printed successfully";
+					var details = "S Reading printed successfully";
 
 					set_system_log(log_type, details);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("Go to Dashboard to proceed");
+					// alert("Go to Dashboard to proceed");
 				}
 			});
 		}
@@ -1954,7 +1990,7 @@ function print_x_reading() {
 						success: function(data) {
 							var log_type = "Report";
 
-							var details = "X-Reading printed successfully";
+							var details = "X Reading printed successfully";
 
 							set_system_log(log_type, details);
 						},
@@ -1964,7 +2000,7 @@ function print_x_reading() {
 					});
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("Go to Dashboard to proceed");
+					// alert("Go to Dashboard to proceed");
 				}
 			});
 		}
@@ -2616,6 +2652,8 @@ function edit_product(id) {
 
 			$('[name="current_name"]').val(data.name);
 			$('[name="current_short_name"]').val(data.short_name);
+
+			$('[name="reorder_pt"]').val(data.reorder_pt);
 
 			$("#modal_form").modal("show"); // show bootstrap modal when complete loaded
 			$(".modal-title").text("Edit Product"); // Set title to Bootstrap modal title
@@ -3541,6 +3579,24 @@ function delete_po_temp(id) {
 		});
 	}
 }
+function delete_po_detail(id) {
+	if (confirm("Are you sure to delete this data?")) {
+		// ajax delete data to database
+		$.ajax({
+			url: "../delete-po-detail/" + id,
+			type: "POST",
+			dataType: "JSON",
+			success: function(data) {
+				//if success reload ajax table
+				$("#modal_form").modal("hide");
+				reload_table();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				alert("Error deleting data");
+			}
+		});
+	}
+}
 function delete_unit(id, name) {
 	if (confirm("Are you sure to delete this data?")) {
 		// ajax delete data to database
@@ -4306,6 +4362,26 @@ function set_dashboard_pdf() {
 	set_system_log(log_type, details);
 }
 
+function set_po_pdf(po_id) {
+	// setting report logs
+	const log_type = "Report";
+
+	const details = "Purchase order report generated";
+	window.open("po-report/" + po_id);
+
+	set_system_log(log_type, details);
+}
+
+function set_po_reprint_pdf(po_id) {
+	// setting report logs
+	const log_type = "Report";
+
+	const details = "Purchase order report reprinted";
+	window.open("../po-report/" + po_id);
+
+	set_system_log_one(log_type, details);
+}
+
 function set_transactions_pdf(status) {
 	// setting report logs
 	var log_type = "Report";
@@ -4588,7 +4664,7 @@ if (document.getElementById("container-current-net-sales")) {
 		},
 		title: {
 			text:
-				"Monthly Total Net Sales for Year ( <b>" +
+				"Monthly Total Sales for Year ( <b>" +
 				current_year +
 				"</b> ): ₱ " +
 				year_total
@@ -4634,7 +4710,7 @@ if (document.getElementById("container-current-net-sales")) {
 		},
 		series: [
 			{
-				name: "Monthly Total Net Sales",
+				name: "Monthly Total Sales",
 				data: [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
 			}
 		]
@@ -4669,7 +4745,7 @@ if (document.getElementById("container-prev-net-sales")) {
 		},
 		title: {
 			text:
-				"Monthly Total Net Sales for Year ( <b>" +
+				"Monthly Total Sales for Year ( <b>" +
 				prev_year +
 				"</b> ): ₱ " +
 				prev_year_total
@@ -4715,7 +4791,7 @@ if (document.getElementById("container-prev-net-sales")) {
 		},
 		series: [
 			{
-				name: "Monthly Total Net Sales",
+				name: "Monthly Total Sales",
 				data: [
 					prev_jan,
 					prev_feb,
@@ -4763,7 +4839,7 @@ if (document.getElementById("container-prev-prev-net-sales")) {
 		},
 		title: {
 			text:
-				"Monthly Total Net Sales for Year ( <b>" +
+				"Monthly Total Sales for Year ( <b>" +
 				prev_prev_year +
 				"</b> ): ₱ " +
 				prev_prev_year_total
@@ -4809,7 +4885,7 @@ if (document.getElementById("container-prev-prev-net-sales")) {
 		},
 		series: [
 			{
-				name: "Monthly Total Net Sales",
+				name: "Monthly Total Sales",
 				data: [
 					prev_prev_jan,
 					prev_prev_feb,

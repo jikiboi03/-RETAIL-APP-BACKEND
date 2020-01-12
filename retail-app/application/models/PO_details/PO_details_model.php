@@ -83,8 +83,9 @@ class PO_details_model extends CI_Model {
 
     function get_po_items($po_id)
     {
+        $this->db->select('po_details.*, products.name as prod_name');
         $this->db->from($this->table);
-
+        $this->db->join('products', 'products.prod_id = po_details.prod_id');
         $this->db->where('po_id',$po_id); // if data is part of the object by ID
 
         $query = $this->db->get();
@@ -138,5 +139,32 @@ class PO_details_model extends CI_Model {
     {
         $this->db->update($this->table, $data, $where);
         return $this->db->affected_rows();
+    }
+
+    public function delete_by_id($num)
+    {
+        $this->db->where('num', $num);
+        $this->db->delete($this->table);
+    }
+
+    function get_no_entry($po_id)
+    {      
+        $this->db->from($this->table);
+        $this->db->where('po_id',$po_id);
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    function get_no_quantity($po_id)
+    {      
+        $this->db->from($this->table);
+        $this->db->where('arrived_qty >',0);
+        $this->db->where('po_id',$po_id);
+
+        $query = $this->db->get();
+
+        return $query;
     }
 }

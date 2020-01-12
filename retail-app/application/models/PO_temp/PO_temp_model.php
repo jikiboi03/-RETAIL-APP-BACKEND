@@ -173,4 +173,23 @@ class PO_temp_model extends CI_Model {
 
         return $query;
     }
+
+    function get_no_entry()
+    {      
+        $this->db->from($this->table);
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    function get_no_quantity()
+    {      
+        $this->db->from($this->table);
+        $this->db->where('unit_qty <=',0);
+
+        $query = $this->db->get();
+
+        return $query;
+    }
 }

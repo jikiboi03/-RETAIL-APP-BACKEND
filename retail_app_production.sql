@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2020 at 04:42 PM
+-- Generation Time: Jan 12, 2020 at 05:02 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -1119,7 +1119,81 @@ INSERT INTO `logs` (`log_id`, `user_fullname`, `log_type`, `details`, `date_time
 (994, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:33:19'),
 (995, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:34:56'),
 (996, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:35:42'),
-(997, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:39:17');
+(997, 'a', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-07 23:39:17'),
+(998, ', ', 'Logout', 'System user logout as Staff', '2020-01-10 21:51:57'),
+(999, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-10 21:53:22'),
+(1000, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-10 21:53:25'),
+(1001, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:00:34'),
+(1002, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:06:21'),
+(1003, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:08:41'),
+(1004, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:09:21'),
+(1005, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:12:05'),
+(1006, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:16:49'),
+(1007, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:17:27'),
+(1008, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:18:23'),
+(1009, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P63', '2020-01-10 23:19:24'),
+(1010, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P85', '2020-01-10 23:20:50'),
+(1011, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P84', '2020-01-10 23:21:18'),
+(1012, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P84', '2020-01-10 23:24:25'),
+(1013, ', ', 'Logout', 'System user logout as Staff', '2020-01-11 13:56:41'),
+(1014, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-11 13:56:46'),
+(1015, 'test', 'Report', 'Products%20Report%20Generated', '2020-01-11 15:52:27'),
+(1016, 'test', 'Add', 'New%20product%20added:%20Test%20Product', '2020-01-11 16:15:54'),
+(1017, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 16:43:29'),
+(1018, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 17:07:16'),
+(1019, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 17:10:21'),
+(1020, 'test', 'Report', 'Products%20Report%20Generated', '2020-01-11 17:10:41'),
+(1021, 'test', 'Report', 'Products%20Report%20Generated', '2020-01-11 17:11:40'),
+(1022, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 17:33:15'),
+(1023, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 17:59:48'),
+(1024, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 19:02:57'),
+(1025, 'test', 'Report', 'Dashboard%20Daily%20Report%20Generated', '2020-01-11 19:03:05'),
+(1026, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:17:25'),
+(1027, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:39:01'),
+(1028, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:40:41'),
+(1029, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:41:54'),
+(1030, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:42:26'),
+(1031, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:45:46'),
+(1032, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:46:48'),
+(1033, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:48:23'),
+(1034, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:50:50'),
+(1035, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:51:48'),
+(1036, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 19:52:16'),
+(1037, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:16:17'),
+(1038, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:16:52'),
+(1039, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:32:12'),
+(1040, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:41:43'),
+(1041, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:42:25'),
+(1042, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:42:34'),
+(1043, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:43:10'),
+(1044, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:43:22'),
+(1045, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:52:26'),
+(1046, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:58:56'),
+(1047, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:59:32'),
+(1048, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 21:59:45'),
+(1049, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 22:00:40'),
+(1050, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 22:05:59'),
+(1051, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-11 22:15:33'),
+(1052, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 23:06:59'),
+(1053, 'test', 'Report', 'Purchase%20order%20report%20generated', '2020-01-11 23:23:10'),
+(1054, 'test', 'Report', 'Purchase%20order%20report%20reprinted', '2020-01-12 00:12:56'),
+(1055, ', ', 'Logout', 'System user logout as Staff', '2020-01-12 19:02:43'),
+(1056, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-12 19:02:47'),
+(1057, 'e, Efren', 'Logout', 'System user logout as Administrator', '2020-01-12 22:26:58'),
+(1058, 'e, Efren', 'Login', 'System user login as Administrator', '2020-01-12 22:27:06'),
+(1059, 'test', 'Report', 'Transactions%20Report%20Generated', '2020-01-12 23:12:03'),
+(1060, 'test', 'Update', 'Product%20updated%20P86:%20Test%20Product%20to%20Test%20Product', '2020-01-12 23:33:07'),
+(1061, 'test', 'Update', 'Product%20updated%20P85:%20SOFTDRINKS%201.5L%20to%20SOFTDRINKS%201.5L', '2020-01-12 23:33:12'),
+(1062, 'test', 'Update', 'Product%20updated%20P86:%20Test%20Product%20to%20Test%20Product', '2020-01-12 23:33:34'),
+(1063, 'test', 'Update', 'Product%20updated%20P85:%20SOFTDRINKS%201.5L%20to%20SOFTDRINKS%201.5L', '2020-01-12 23:33:42'),
+(1064, 'test', 'Update', 'Product%20updated%20P86:%20Test%20Product%20to%20Test%20Product', '2020-01-12 23:35:13'),
+(1065, 'test', 'Update', 'Product%20updated%20P86:%20Test%20Product%20to%20Test%20Product', '2020-01-12 23:37:42'),
+(1066, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P86', '2020-01-12 23:38:02'),
+(1067, 'test', 'Update', 'Product%20updated%20P59:%20Brewed%20Coffee%20to%20Brewed%20Coffee', '2020-01-12 23:56:31'),
+(1068, 'test', 'Update', 'Product%20updated%20P59:%20Brewed%20Coffee%20to%20Brewed%20Coffee', '2020-01-12 23:56:56'),
+(1069, 'test', 'Update', 'Product%20updated%20P59:%20Brewed%20Coffee%20to%20Brewed%20Coffee', '2020-01-12 23:57:09'),
+(1070, 'test', 'Update', 'Product%20updated%20P59:%20Brewed%20Coffee%20to%20Brewed%20Coffee', '2020-01-12 23:57:25'),
+(1071, 'test', 'Add', 'Stock%20adjustment%20added%20to%20P59', '2020-01-12 23:57:53');
 
 -- --------------------------------------------------------
 
@@ -1192,8 +1266,26 @@ CREATE TABLE `po` (
 INSERT INTO `po` (`po_id`, `supplier_id`, `user_id`, `date`, `status`, `encoded`) VALUES
 (1, 1, 120, '2020-01-05', 'CANCELLED', '2020-01-06 23:08:43'),
 (2, 2, 120, '2020-01-28', 'COMPLETED', '2020-01-06 23:11:13'),
-(3, 1, 120, '2020-01-08', 'COMPLETED', '2020-01-07 23:15:33'),
-(4, 2, 120, '2020-01-07', 'CANCELLED', '2020-01-07 23:19:56');
+(3, 2, 120, '2020-01-08', 'COMPLETED', '2020-01-07 23:15:33'),
+(4, 2, 120, '2020-01-07', 'CANCELLED', '2020-01-07 23:19:56'),
+(5, 2, 120, '2020-01-17', 'COMPLETED', '2020-01-11 16:19:10'),
+(6, 1, 120, '2020-01-11', 'CANCELLED', '2020-01-11 16:42:43'),
+(7, 1, 120, '2020-01-13', 'PENDING', '2020-01-11 18:51:44'),
+(8, 2, 120, '2020-01-11', 'PENDING', '2020-01-11 19:17:25'),
+(9, 1, 120, '2020-01-11', 'PENDING', '2020-01-11 19:39:01'),
+(10, 1, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:40:38'),
+(11, 1, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:41:54'),
+(12, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:42:24'),
+(13, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:44:38'),
+(14, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:45:46'),
+(15, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:46:48'),
+(16, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:48:23'),
+(17, 1, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:50:49'),
+(18, 2, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:51:48'),
+(19, 1, 120, '2020-01-11', 'CANCELLED', '2020-01-11 19:52:16'),
+(20, 1, 120, '2020-01-11', 'PENDING', '2020-01-11 22:00:40'),
+(21, 2, 120, '2020-01-11', 'COMPLETED', '2020-01-11 23:06:59'),
+(22, 1, 120, '2020-01-10', 'COMPLETED', '2020-01-11 23:23:10');
 
 -- --------------------------------------------------------
 
@@ -1216,7 +1308,7 @@ CREATE TABLE `pos` (
 --
 
 INSERT INTO `pos` (`pos_id`, `pos_name`, `hardware_id`, `software_id`, `receipt_count`, `activated`, `encoded`) VALUES
-(2, 'WOA_1', '95483d5d09788ff1', 'apk00001', 0, 1, '2018-08-29 14:08:58'),
+(2, 'WOA_1', '351804bbc3a8cfd5', 'apk00001', 0, 1, '2018-08-29 14:08:58'),
 (3, 'WOA_2', 'f993ca9079aad6e5', 'apk00002', 0, 1, '2018-09-17 12:53:19'),
 (4, 'WOA_3', 'ffd42f8388ce4029', 'apk00003', 0, 1, '2018-09-22 11:17:49'),
 (10, 'WOA_4', '63a9e3e7d44c12e2', 'apk00004', 0, 1, '2018-09-25 12:13:45'),
@@ -1252,7 +1344,47 @@ INSERT INTO `po_details` (`num`, `po_id`, `prod_id`, `unit`, `unit_qty`, `arrive
 (8, 2, 22, 'pcs', 1, 0),
 (9, 2, 63, 'pcs', 7, 8),
 (10, 3, 4, 'pcs', 2, 3),
-(11, 4, 4, 'pcs', 2, 4);
+(11, 4, 4, 'pcs', 2, 4),
+(13, 5, 86, 'pcs', 2, 2),
+(15, 8, 83, 'pcs', 0, 0),
+(16, 8, 84, 'pcs', 0, 0),
+(17, 8, 85, 'pcs', 0, 0),
+(18, 9, 83, 'pcs', 4, 0),
+(19, 9, 84, 'pcs', 1, 4),
+(20, 9, 85, 'pcs', 2, 0),
+(21, 9, 86, 'pcs', 2, 0),
+(22, 10, 84, 'pcs', 0, 0),
+(23, 10, 85, 'pcs', 0, 0),
+(24, 10, 86, 'pcs', 0, 0),
+(25, 11, 85, 'pcs', 0, 0),
+(26, 11, 86, 'pcs', 0, 0),
+(27, 12, 84, 'pcs', 0, 0),
+(28, 12, 85, 'pcs', 0, 0),
+(29, 12, 86, 'pcs', 0, 0),
+(30, 13, 85, 'pcs', 0, 0),
+(31, 13, 86, 'pcs', 0, 0),
+(32, 14, 83, 'pcs', 0, 0),
+(33, 14, 84, 'pcs', 0, 0),
+(34, 14, 85, 'pcs', 0, 0),
+(35, 14, 86, 'pcs', 0, 0),
+(36, 15, 85, 'pcs', 0, 0),
+(37, 15, 86, 'pcs', 0, 0),
+(38, 16, 2, 'pcs', 0, 0),
+(39, 16, 53, 'pcs', 0, 0),
+(40, 16, 63, 'pcs', 0, 0),
+(41, 17, 85, 'pcs', 0, 0),
+(42, 17, 86, 'pcs', 0, 0),
+(43, 18, 85, 'pcs', 0, 0),
+(44, 18, 86, 'pcs', 0, 0),
+(45, 19, 84, 'pcs', 0, 0),
+(46, 19, 85, 'pcs', 0, 0),
+(47, 19, 86, 'pcs', 0, 0),
+(48, 20, 77, 'pcs', 10, 1),
+(49, 20, 78, 'pcs', 5, 2),
+(50, 20, 79, 'pcs', 5, 0),
+(56, 21, 53, 'pcs', 1, 1),
+(57, 21, 80, 'pcs', 2, 1),
+(61, 22, 53, 'pcs', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1314,9 +1446,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `price`, `img`, `sold`, `sold_pack`, `encoded`, `removed`, `stock_in`, `stock_out`, `reorder_pt`) VALUES
-(1, 'Crispy Pata', 'CrispyPata', '', 1, '100.00', '1_2_.jpg', 244, 0, '2018-09-16 15:06:15', 0, 0, 0, 0),
-(2, 'Ampalaya con Karne', 'AmplyaCnKrne', '', 2, '85.00', '2_2_.jpg', 66, 0, '2018-09-18 12:16:33', 0, 2, 0, 0),
-(3, 'Canton Guisado', 'CantonGsado', '', 1, '50.00', '', 479, 0, '2018-09-22 11:44:53', 0, 0, 0, 0),
+(1, 'Crispy Pata', 'CrispyPata', '', 1, '100.00', '1_2_.jpg', 254, 0, '2018-09-16 15:06:15', 0, 0, 10, 0),
+(2, 'Ampalaya con Karne', 'AmplyaCnKrne', '', 2, '85.00', '2_2_.jpg', 71, 0, '2018-09-18 12:16:33', 0, 2, 5, 0),
+(3, 'Canton Guisado', 'CantonGsado', '', 1, '50.00', '', 499, 0, '2018-09-22 11:44:53', 0, 0, 20, 0),
 (4, 'Beef Caldereta', 'BeefCaldreta', '', 2, '125.00', '4_2_.jpg', 49, 0, '2018-09-22 11:46:31', 0, 3, 0, 0),
 (5, 'Taro Shake', 'Taro', '', 7, '60.00', '5_2_.jpg', 44, 0, '2018-09-22 11:48:16', 0, 0, 0, 0),
 (6, 'Macha Shake', 'Macha', '', 7, '60.00', '6_2_.jpg', 50, 0, '2018-09-22 11:51:07', 0, 0, 0, 0),
@@ -1337,7 +1469,7 @@ INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `pri
 (21, 'Beef Strips', 'BeefStrips', '', 2, '150.00', '', 21, 0, '2018-09-24 09:21:06', 0, 0, 0, 0),
 (22, 'Beef Stew/ Nilaga', 'BeefNilaga', '', 2, '175.00', '', 31, 0, '2018-09-24 09:21:33', 0, 0, 0, 0),
 (23, 'Bulalo', 'BeefBulalo', '', 2, '250.00', '', 17, 0, '2018-09-24 09:22:31', 0, 0, 0, 0),
-(24, 'Beef Kare-Kare', 'BeefKareKare', '', 2, '250.00', '', 10, 0, '2018-09-24 09:23:01', 0, 0, 0, 0),
+(24, 'Beef Kare-Kare', 'BeefKareKare', '', 2, '250.00', '', 13, 0, '2018-09-24 09:23:01', 0, 0, 3, 0),
 (25, 'Buttered Chicken', 'ButteredChix', '', 3, '175.00', '', 145, 0, '2018-09-24 09:23:48', 0, 0, 0, 0),
 (26, 'Chicken Adobo', 'ChixAdobo', '', 3, '75.00', '', 129, 0, '2018-09-24 09:24:26', 0, 0, 0, 0),
 (27, 'Chicken Curry', 'ChixCurry', '', 3, '110.00', '', 42, 0, '2018-09-24 09:24:45', 0, 0, 0, 0),
@@ -1366,17 +1498,17 @@ INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `pri
 (50, 'Steamed Mix Veggies', 'SteamdMixVeg', '', 5, '50.00', '', 40, 0, '2018-09-24 09:41:51', 0, 0, 0, 0),
 (51, 'Vegetable Curry', 'VgetbleCurry', '', 5, '60.00', '', 55, 0, '2018-09-24 09:42:21', 0, 0, 0, 0),
 (52, 'Veggie Tempura', 'VgtbleTempur', '', 5, '90.00', '', 7, 0, '2018-09-24 09:42:54', 0, 0, 0, 0),
-(53, 'Apple Juice', 'Apple ', '', 6, '75.00', '', 0, 0, '2018-09-24 09:43:48', 0, 0, 0, 0),
+(53, 'Apple Juice', 'Apple ', '', 6, '75.00', '', 11, 0, '2018-09-24 09:43:48', 0, 2, 11, 0),
 (54, 'Pineaple Juice', 'Pineapple', '', 6, '75.00', '', 60, 0, '2018-09-24 09:44:16', 0, 0, 0, 0),
 (55, 'Water Melon', 'WaterMelon', '', 6, '65.00', '', 27, 0, '2018-09-24 09:44:41', 0, 0, 0, 0),
 (56, 'Kalamansi', 'Kalamansi', '', 6, '40.00', '', 194, 0, '2018-09-24 09:45:00', 0, 0, 0, 0),
 (57, 'Hot Tea', 'HotTea', '', 6, '30.00', '', 16, 0, '2018-09-24 09:45:20', 0, 0, 0, 0),
 (58, 'Iced Tea', 'IcedTea', '', 6, '18.00', '', 601, 0, '2018-09-24 09:45:40', 0, 0, 0, 0),
-(59, 'Brewed Coffee', 'BrwedCoffee', '', 6, '30.00', '', 9, 0, '2018-09-24 09:46:00', 0, 6, 0, 0),
+(59, 'Brewed Coffee', 'BrwedCoffee', '', 6, '30.00', '', 9, 0, '2018-09-24 09:46:00', 0, 7, 0, 1),
 (60, 'Instant Coffee', 'InstntCoffee', '', 6, '20.00', '', 43, 0, '2018-09-24 09:46:26', 0, 0, 0, 0),
 (61, 'Mango Shake', 'MngoShake', '', 7, '55.00', '', 559, 0, '2018-09-24 09:47:28', 0, 0, 0, 0),
 (62, 'Guyabano Shake', 'GuyabnoShake', '', 7, '50.00', '', 114, 0, '2018-09-24 09:47:50', 0, 0, 0, 0),
-(63, 'Avocado Shake', 'AvocadoShake', '', 7, '50.00', '', 143, 0, '2018-09-24 09:48:12', 0, 8, 0, 0),
+(63, 'Avocado Shake', 'AvocadoShake', '', 7, '50.00', '', 148, 0, '2018-09-24 09:48:12', 0, 22, 18, 0),
 (64, 'Oreo Choco Shake', 'OreoChocShke', '', 7, '50.00', '', 173, 0, '2018-09-24 09:48:39', 0, 0, 0, 0),
 (65, 'Cake', 'Cake', '', 8, '50.00', '', 0, 0, '2018-09-24 09:49:32', 0, 0, 0, 0),
 (66, 'Mango Float', 'MangoFloat', '', 8, '30.00', '', 277, 0, '2018-09-24 09:49:57', 0, 0, 0, 0),
@@ -1393,12 +1525,13 @@ INSERT INTO `products` (`prod_id`, `name`, `short_name`, `descr`, `cat_id`, `pri
 (77, 'Pale Pilsen', 'PalePilsen', '', 6, '55.00', '', 35, 0, '2018-09-24 17:52:18', 0, 0, 0, 0),
 (78, 'Rice', 'Rice', '', 10, '15.00', '', 9454, 0, '2018-09-24 17:53:36', 0, 0, 0, 0),
 (79, 'Rice 1/2', 'Rice 1/2', '', 10, '8.00', '', 123, 0, '2018-09-24 17:57:08', 0, 0, 0, 0),
-(80, 'Banana per Piece', 'BnanaPrPiece', '', 11, '12.00', '', 40, 0, '2018-09-24 18:15:11', 0, 0, 0, 0),
+(80, 'Banana per Piece', 'BnanaPrPiece', '', 11, '12.00', '', 40, 0, '2018-09-24 18:15:11', 0, 1, 0, 0),
 (81, 'Mango per Piece', 'MangoPrPiece', '', 11, '55.00', '', 5, 0, '2018-09-24 18:15:49', 0, 0, 0, 0),
 (82, 'Bottled Water 101', 'NSpring101', '', 6, '30.00', '', 13, 0, '2018-09-24 18:17:12', 0, 0, 0, 0),
 (83, 'Bottled Water Le Mineral', 'LeMineral', '', 6, '25.00', '', 3, 0, '2018-09-24 18:17:54', 0, 0, 0, 0),
-(84, 'Sotanghon Soup', 'StanghonSoup', '', 1, '50.00', '', 32, 0, '2018-09-24 19:29:26', 0, 0, 0, 0),
-(85, 'SOFTDRINKS 1.5L', 'SftDrnks1.5L', '', 6, '95.00', '', 76, 0, '2018-09-28 08:22:32', 0, 0, 0, 0);
+(84, 'Sotanghon Soup', 'StanghonSoup', '', 1, '50.00', '', 32, 0, '2018-09-24 19:29:26', 0, 5, 6, 0),
+(85, 'SOFTDRINKS 1.5L', 'SftDrnks1.5L', '', 6, '95.00', '', 76, 0, '2018-09-28 08:22:32', 0, 3, 0, 2),
+(86, 'Test Product', 'TestProd', '', 6, '100.00', '', 0, 0, '2020-01-11 16:15:54', 0, 8, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1430,6 +1563,37 @@ CREATE TABLE `prod_discounts` (
   `encoded` datetime NOT NULL DEFAULT current_timestamp(),
   `removed` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock_adjustments`
+--
+
+CREATE TABLE `stock_adjustments` (
+  `num` int(11) NOT NULL,
+  `prod_id` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `qty_before` int(11) DEFAULT NULL,
+  `qty_after` int(11) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
+  `encoded` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_adjustments`
+--
+
+INSERT INTO `stock_adjustments` (`num`, `prod_id`, `qty`, `qty_before`, `qty_after`, `remarks`, `encoded`) VALUES
+(6, 63, 2, 9, 11, 'test1', '2020-01-10 23:16:49'),
+(7, 63, 5, 11, 16, 'test2', '2020-01-10 23:17:27'),
+(8, 63, -3, 16, 13, 'test3', '2020-01-10 23:18:23'),
+(9, 63, -4, 13, 9, 'test4', '2020-01-10 23:19:24'),
+(10, 85, 3, 0, 3, 'test1', '2020-01-10 23:20:50'),
+(11, 84, 5, 0, 5, 'test1', '2020-01-10 23:21:18'),
+(12, 84, -6, 5, -1, 'test2', '2020-01-10 23:24:25'),
+(13, 86, 6, 2, 8, 'test add', '2020-01-12 23:38:02'),
+(14, 59, 1, 6, 7, 'test add', '2020-01-12 23:57:53');
 
 -- --------------------------------------------------------
 
@@ -1744,7 +1908,15 @@ INSERT INTO `s_readings` (`reading_no`, `pos_no`, `cashier_username`, `date`, `t
 (219, 1, 'EVA', '2019-01-20', 14, 4, 18, 18, 0, 0, 0, '6882.00', '0.00', '0.00', '0.00', '0.00', '6882.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003478, 10003495, '2019-01-20 15:17:22'),
 (220, 1, 'EVA', '2019-01-20', 31, 6, 37, 37, 0, 0, 0, '12576.00', '0.00', '0.00', '0.00', '0.00', '12576.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003478, 10003514, '2019-01-20 20:48:53'),
 (221, 1, 'JOVELL', '2019-01-21', 8, 1, 9, 9, 0, 0, 0, '2629.00', '34.00', '0.00', '0.00', '34.00', '2663.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003515, 10003523, '2019-01-21 15:06:47'),
-(222, 1, 'EVA', '2019-01-21', 22, 2, 24, 24, 0, 0, 0, '6617.00', '0.00', '0.00', '0.00', '0.00', '6617.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003524, 10003547, '2019-01-21 21:30:41');
+(222, 1, 'EVA', '2019-01-21', 22, 2, 24, 24, 0, 0, 0, '6617.00', '0.00', '0.00', '0.00', '0.00', '6617.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003524, 10003547, '2019-01-21 21:30:41'),
+(223, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 20:03:47'),
+(224, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 22:27:10'),
+(225, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 22:32:14'),
+(226, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 22:43:47'),
+(227, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 23:00:08'),
+(228, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 23:05:01'),
+(229, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 23:06:43'),
+(230, 1, 'test', '2020-01-12', 0, 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 0, '2020-01-12 23:07:11');
 
 -- --------------------------------------------------------
 
@@ -5427,7 +5599,19 @@ INSERT INTO `transactions` (`trans_id`, `datetime`, `discount`, `disc_type`, `st
 (3586, '2019-01-21 20:10:50', '0.00', 0, 'CLEARED', 'DINE-IN', '205.00', '1.00', 'Cash', 'n/a', 'n/a', 'n/a', 120, 121, 0, 1, 10003545),
 (3587, '2019-01-21 20:25:40', '0.00', 0, 'CLEARED', 'DINE-IN', '100.00', '10.00', 'Cash', 'n/a', 'n/a', 'n/a', 116, 121, 0, 0, 10003546),
 (3588, '2019-01-21 20:40:24', '0.00', 0, 'CLEARED', 'DINE-IN', '1450.00', '0.00', 'Cash', 'n/a', 'n/a', 'n/a', 116, 121, 0, 1, 10003547),
-(3589, '2019-03-19 19:56:13', '0.00', 0, 'ONGOING', 'DINE-IN', '0.00', '0.00', 'n/a', 'n/a', 'n/a', 'n/a', 113, 0, 0, 0, 10000000);
+(3589, '2019-03-19 19:56:13', '0.00', 0, 'ONGOING', 'DINE-IN', '0.00', '0.00', 'n/a', 'n/a', 'n/a', 'n/a', 113, 121, 0, 0, 10000000),
+(3590, '2020-01-12 12:22:47', '0.00', 0, 'ONGOING', 'TAKE-OUT', '0.00', '0.00', 'n/a', 'n/a', 'n/a', 'n/a', 113, 121, 0, 0, 10000000),
+(3591, '2020-01-12 13:03:08', '0.00', 0, 'ONGOING', 'TAKE-OUT', '0.00', '0.00', 'n/a', 'n/a', 'n/a', 'n/a', 113, 121, 0, 0, 10000000),
+(3592, '2020-01-12 14:03:01', '0.00', 0, 'CLEARED', 'DINE-IN', '2000.00', '600.00', 'Cash', 'n/a', 'n/a', 'n/a', 112, 121, 0, 0, 1100000),
+(3593, '2020-01-12 14:03:58', '0.00', 0, 'CLEARED', 'DINE-IN', '2000.00', '600.00', 'Cash', 'n/a', 'n/a', 'n/a', 112, 121, 0, 0, 1100000),
+(3594, '2020-01-12 14:04:51', '0.00', 0, 'CLEARED', 'DINE-IN', '2000.00', '600.00', 'Cash', 'n/a', 'n/a', 'n/a', 112, 121, 0, 0, 1100000),
+(3595, '2020-01-12 14:05:15', '0.00', 0, 'CLEARED', 'DINE-IN', '2000.00', '600.00', 'Cash', 'n/a', 'n/a', 'n/a', 112, 121, 0, 0, 1100000),
+(3596, '2020-01-12 14:52:47', '0.00', 0, 'CLEARED', 'DINE-IN', '2000.00', '600.00', 'Cash', 'n/a', 'n/a', 'n/a', 112, 121, 0, 0, 1100000),
+(3597, '2020-01-12 14:58:44', '0.00', 0, 'CLEARED', 'TAKE-OUT', '500.00', '90.00', 'Cash', 'n/a', 'n/a', 'n/a', 121, 121, 0, 0, 2000005),
+(3598, '2020-01-12 15:00:26', '0.00', 0, 'CLEARED', 'DINE-IN', '1000.00', '250.00', 'Cash', 'n/a', 'n/a', 'n/a', 121, 121, 0, 0, 2000006),
+(3599, '2020-01-12 15:12:13', '0.00', 0, 'CLEARED', 'DINE-IN', '500.00', '40.00', 'Cash', 'n/a', 'n/a', 'n/a', 121, 121, 0, 0, 2000007),
+(3600, '2020-01-12 15:14:48', '0.00', 0, 'CLEARED', 'DINE-IN', '500.00', '30.00', 'Cash', 'n/a', 'n/a', 'n/a', 121, 121, 0, 0, 2000008),
+(3601, '2020-01-12 15:16:17', '0.00', 0, 'CLEARED', 'TAKE-OUT', '1000.00', '840.00', 'Cash', 'n/a', 'n/a', 'n/a', 121, 121, 0, 0, 2000009);
 
 -- --------------------------------------------------------
 
@@ -19519,7 +19703,28 @@ INSERT INTO `trans_details` (`trans_id`, `prod_id`, `pack_id`, `prod_type`, `pri
 (3589, 2, 0, 0, '85.00', 1, '85.00', 0),
 (3589, 53, 0, 0, '75.00', 1, '75.00', 0),
 (3589, 63, 0, 0, '50.00', 1, '50.00', 0),
-(3589, 19, 0, 0, '125.00', 3, '375.00', 0);
+(3589, 19, 0, 0, '125.00', 3, '375.00', 0),
+(3590, 2, NULL, 0, '85.00', 1, '85.00', NULL),
+(3590, 53, NULL, 0, '75.00', 1, '75.00', NULL),
+(3591, 2, NULL, 0, '85.00', 1, '85.00', NULL),
+(3591, 4, NULL, 0, '125.00', 1, '125.00', NULL),
+(3591, 24, NULL, 0, '250.00', 1, '250.00', NULL),
+(3594, 1, NULL, 0, '100.00', 2, '200.00', NULL),
+(3594, 3, NULL, 0, '50.00', 4, '200.00', NULL),
+(3595, 1, NULL, 0, '100.00', 2, '200.00', NULL),
+(3595, 3, NULL, 0, '50.00', 4, '200.00', NULL),
+(3596, 1, NULL, 0, '100.00', 2, '200.00', NULL),
+(3596, 3, NULL, 0, '50.00', 4, '200.00', NULL),
+(3597, 2, NULL, 0, '85.00', 1, '85.00', NULL),
+(3597, 53, NULL, 0, '75.00', 1, '75.00', NULL),
+(3597, 63, NULL, 0, '50.00', 5, '250.00', NULL),
+(3598, 24, NULL, 0, '250.00', 3, '750.00', NULL),
+(3599, 2, NULL, 0, '85.00', 1, '85.00', NULL),
+(3599, 53, NULL, 0, '75.00', 5, '375.00', NULL),
+(3600, 2, NULL, 0, '85.00', 2, '170.00', NULL),
+(3600, 53, NULL, 0, '75.00', 4, '300.00', NULL),
+(3601, 2, NULL, 0, '85.00', 1, '85.00', NULL),
+(3601, 53, NULL, 0, '75.00', 1, '75.00', NULL);
 
 -- --------------------------------------------------------
 
@@ -29920,7 +30125,14 @@ INSERT INTO `trans_logs` (`log_id`, `user_fullname`, `log_type`, `details`, `dat
 (10360, 'Fren', 'UpdateOrder', 'Transaction updated S3588 by U120', '2019-01-21 20:58:34'),
 (10361, 'Fren', 'UpdateOrder', 'Transaction updated S3588 by U120', '2019-01-21 20:59:39'),
 (10362, 'EVA', 'Payment', 'Transaction payment S3588 RCPT#: 10003547', '2019-01-21 21:30:09'),
-(10363, 'a', 'SetOrder', 'New transaction added S3589 by U113', '2019-03-19 19:56:14');
+(10363, 'a', 'SetOrder', 'New transaction added S3589 by U113', '2019-03-19 19:56:14'),
+(10364, 'a', 'SetOrder', 'New transaction added S3591 by U113', '2020-01-12 20:03:08'),
+(10365, NULL, 'Payment', 'Transaction payment S3596 RCPT#: 1100000', '2020-01-12 21:52:47'),
+(10366, NULL, 'Payment', 'Transaction payment S3597 RCPT#: 2000005', '2020-01-12 21:58:44'),
+(10367, NULL, 'Payment', 'Transaction payment S3598 RCPT#: 2000006', '2020-01-12 22:00:26'),
+(10368, NULL, 'Payment', 'Transaction payment S3599 RCPT#: 2000007', '2020-01-12 22:12:13'),
+(10369, NULL, 'Payment', 'Transaction payment S3600 RCPT#: 2000008', '2020-01-12 22:14:48'),
+(10370, NULL, 'Payment', 'Transaction payment S3601 RCPT#: 2000009', '2020-01-12 22:16:17');
 
 -- --------------------------------------------------------
 
@@ -30138,7 +30350,14 @@ INSERT INTO `x_readings` (`reading_no`, `pos_no`, `cashier_username`, `date`, `t
 (113, 1, 'EVA', '2019-01-18', 26, 5, 31, 31, 0, 0, 2, '12132.00', '0.00', '16.00', '0.00', '16.00', '12148.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003416, 10003446, '2019-01-18 21:00:20'),
 (114, 1, 'JOVELL', '2019-01-19', 23, 8, 31, 31, 0, 0, 3, '9167.00', '27.00', '0.00', '0.00', '27.00', '9194.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003447, 10003477, '2019-01-19 20:45:46'),
 (115, 1, 'EVA', '2019-01-20', 31, 6, 37, 37, 0, 0, 7, '12576.00', '0.00', '0.00', '0.00', '0.00', '12576.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003478, 10003514, '2019-01-20 20:50:27'),
-(116, 1, 'EVA', '2019-01-21', 30, 3, 33, 33, 0, 0, 1, '9246.00', '34.00', '0.00', '0.00', '34.00', '9280.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003515, 10003547, '2019-01-21 21:38:20');
+(116, 1, 'EVA', '2019-01-21', 30, 3, 33, 33, 0, 0, 1, '9246.00', '34.00', '0.00', '0.00', '34.00', '9280.00', '0.00', '0.00', '0.00', '0.00', '0.00', 10003515, 10003547, '2019-01-21 21:38:20'),
+(117, 1, 'test', '2020-01-12', 0, 2, 2, 0, 0, 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 0, 10000000, '2020-01-12 20:04:46'),
+(118, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 22:29:49'),
+(119, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 22:36:09'),
+(120, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 22:40:03'),
+(121, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 22:42:59'),
+(122, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 22:44:01'),
+(123, 1, 'test', '2020-01-12', 8, 4, 12, 10, 0, 0, 0, '9250.00', '0.00', '0.00', '0.00', '0.00', '9250.00', '0.00', '0.00', '0.00', '0.00', '0.00', 1100000, 10000000, '2020-01-12 23:03:51');
 
 --
 -- Indexes for dumped tables
@@ -30221,6 +30440,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `prod_discounts`
   ADD PRIMARY KEY (`pd_id`);
+
+--
+-- Indexes for table `stock_adjustments`
+--
+ALTER TABLE `stock_adjustments`
+  ADD PRIMARY KEY (`num`);
 
 --
 -- Indexes for table `store_config`
@@ -30308,7 +30533,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=998;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1072;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -30326,7 +30551,7 @@ ALTER TABLE `pack_discounts`
 -- AUTO_INCREMENT for table `po`
 --
 ALTER TABLE `po`
-  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `pos`
@@ -30338,7 +30563,7 @@ ALTER TABLE `pos`
 -- AUTO_INCREMENT for table `po_details`
 --
 ALTER TABLE `po_details`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `po_temp_details`
@@ -30350,13 +30575,19 @@ ALTER TABLE `po_temp_details`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `prod_discounts`
 --
 ALTER TABLE `prod_discounts`
   MODIFY `pd_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `stock_adjustments`
+--
+ALTER TABLE `stock_adjustments`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `store_config`
@@ -30374,7 +30605,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `s_readings`
 --
 ALTER TABLE `s_readings`
-  MODIFY `reading_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `reading_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `tables`
@@ -30386,19 +30617,19 @@ ALTER TABLE `tables`
 -- AUTO_INCREMENT for table `table_groups`
 --
 ALTER TABLE `table_groups`
-  MODIFY `tbl_grp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tbl_grp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3590;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3602;
 
 --
 -- AUTO_INCREMENT for table `trans_logs`
 --
 ALTER TABLE `trans_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10364;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10371;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -30416,7 +30647,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `x_readings`
 --
 ALTER TABLE `x_readings`
-  MODIFY `reading_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `reading_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

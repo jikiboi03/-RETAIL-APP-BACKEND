@@ -63,6 +63,12 @@
                     </div>
                     <!--===================================================-->
                     <!-- End Striped Table -->
+                    <div class="col-md-8">
+                        <span>Legend: [ &nbsp; 
+                        <i style = "color: #FFFF99;" class="fa fa-square"></i><i style = "color: #FFFF66;" class="fa fa-square"></i> - Warning level &nbsp; 
+                        | &nbsp; 
+                        <i style = "color: #ffd8b4;" class="fa fa-square"></i><i style = "color: #ffe5cd;" class="fa fa-square"></i> - Critical level &nbsp; ]</span>
+                    </div>
                     <!-- <span>Legend: [ &nbsp; <i style = "color: #99ff99;" class="fa fa-square"></i> - Today &nbsp; | &nbsp; <i style = "color: #cccccc;" class="fa fa-square"></i> - Ended &nbsp; | &nbsp; <i style = "color: #ffffff;" class="fa fa-square"></i> - Incoming &nbsp; ]</span> -->
                 </div>
                 <!--===================================================-->

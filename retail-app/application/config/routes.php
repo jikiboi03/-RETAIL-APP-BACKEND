@@ -126,7 +126,7 @@ $route['edit-po-detail/(:num)'] = 'PO_details/PO_details_controller/ajax_edit/$1
 
 $route['update-po-detail'] = 'PO_details/PO_details_controller/ajax_update';
 
-$route['delete-po-detail/(:num)/(:num)'] = 'PO_details/PO_details_controller/ajax_delete/$1/$2';
+$route['delete-po-detail/(:num)'] = 'PO_details/PO_details_controller/ajax_delete/$1';
 
 //======================================== API SECTION =================================================================
 
@@ -501,6 +501,8 @@ $route['statistics-page'] = 'Statistics/Statistics_controller/index';
 $route['reports-page'] = 'Reports/Reports_controller';
 
 $route['dashboard-report'] = 'Pdf_reports/Pdf_dashboard_report_controller/index';
+
+$route['po-report/(:any)'] = 'Pdf_reports/Pdf_po_report_controller/index/$1';
 
 // menu items -----------------------------------------
 $route['products-report'] = 'Pdf_reports/Pdf_products_report_controller/index';
