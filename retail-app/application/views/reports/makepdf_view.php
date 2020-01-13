@@ -53,7 +53,7 @@ $pdf->SetSubject('ANC Report');
 $pdf->SetKeywords('child');
 
 // set default header data
-$pdf->SetHeaderData('anc.jpg', 45, $title, "\r\n" . 'Archdiocesan Nourishment Center - Data Profiling System' . "\r\n" . 'Prepared by: ' . $user_fullname . "\r\n" . 'Date: ' . $current_date . "\r\n" . "\r\n" . 'Total Records: ' . count($data));
+$pdf->SetHeaderData(null, 0, "\r\n" . 'Archdiocesan Nourishment Center - Data Profiling System' . "\r\n" . 'Prepared by: ' . $user_fullname . "\r\n" . 'Date: ' . $current_date . "\r\n" . "\r\n" . 'Total Records: ' . count($data));
 
 
 
